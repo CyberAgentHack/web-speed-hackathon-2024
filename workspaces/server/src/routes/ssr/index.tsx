@@ -20,7 +20,26 @@ import { INDEX_HTML_PATH } from '../../constants/paths';
 const app = new Hono();
 
 async function createInjectDataStr(): Promise<Record<string, unknown>> {
+  const startTime = Date.now(); // 開始時間
+
+
   const json: Record<string, unknown> = {};
+
+  {
+    const ranking = await rankingApiClient.fetchList({ query: {} });
+    json[unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }))] = ranking;
+  }
+  const releasetime = Date.now(); 
+  console.log("release", releasetime - startTime); 
+
+  {
+    const features = await featureApiClient.fetchList({ query: {} });
+    json[unstable_serialize(featureApiClient.fetchList$$key({ query: {} }))] = features;
+  }
+
+  const featuretime = Date.now(); 
+  console.log("feature", featuretime - releasetime); 
+
 
   {
     const dayOfWeek = getDayOfWeekStr(moment());
@@ -28,15 +47,8 @@ async function createInjectDataStr(): Promise<Record<string, unknown>> {
     json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
   }
 
-  {
-    const features = await featureApiClient.fetchList({ query: {} });
-    json[unstable_serialize(featureApiClient.fetchList$$key({ query: {} }))] = features;
-  }
-
-  {
-    const ranking = await rankingApiClient.fetchList({ query: {} });
-    json[unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }))] = ranking;
-  }
+  const rankingtime = Date.now(); 
+  console.log("ranking", rankingtime - releasetime); 
 
   return json;
 }
@@ -70,7 +82,11 @@ async function createHTML({
 }
 
 app.get('*', async (c) => {
+  const startTime = Date.now(); // 開始時間
+
   const injectData = await createInjectDataStr();
+  const injected = Date.now(); 
+  console.log("injected", injected - startTime); 
   const sheet = new ServerStyleSheet();
 
   try {
@@ -82,9 +98,13 @@ app.get('*', async (c) => {
       ),
     );
 
+    const rendered = Date.now(); 
+    console.log("render", rendered - injected); 
+
     const styleTags = sheet.getStyleTags();
     const html = await createHTML({ body, injectData, styleTags });
-
+    const createhtml = Date.now(); 
+    console.log("createhtml", createhtml-rendered); 
     return c.html(html);
   } catch (cause) {
     throw new HTTPException(500, { cause, message: 'SSR error.' });

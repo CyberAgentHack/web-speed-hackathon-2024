@@ -31,7 +31,6 @@ class ReleaseRepository implements ReleaseRepositoryInterface {
       return err(new HTTPException(500, { cause, message: `Failed to read releases.` }));
     }
   }
-
   async read(options: { params: GetReleaseRequestParams }): Promise<Result<GetReleaseResponse, HTTPException>> {
     try {
       const data = await getDatabase().query.release.findFirst({
