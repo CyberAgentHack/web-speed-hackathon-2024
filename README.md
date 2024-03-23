@@ -40,3 +40,5 @@ https://github.com/CyberAgentHack/web-speed-hackathon-2024-scoring-tool/issues/n
 - Code: (c) CyberAgent, Inc. MPL-2.0
 - Image data: Unsplash License by https://unsplash.com
 - Manga data: ブラックジャックによろしく 佐藤秀峰
+
+プッシュテスト
