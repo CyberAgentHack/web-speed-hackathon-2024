@@ -34,3 +34,9 @@ https://github.com/CyberAgentHack/web-speed-hackathon-2024-scoring-tool/issues/n
 ## 開発方法
 
 開発方法は [./docs/development.md](./docs/development.md) を参照してください。
+
+## LICENSE
+
+- Code: (c) CyberAgent, Inc. MPL-2.0
+- Image data: Unsplash License by https://unsplash.com
+- Manga data: ブラックジャックによろしく 佐藤秀峰

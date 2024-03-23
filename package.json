@@ -1,5 +1,6 @@
 {
   "private": true,
+  "license": "MPL-2.0",
   "scripts": {
     "build": "pnpm --filter \"@wsh-2024/client\" --filter \"@wsh-2024/server\" --parallel run build",
     "format": "pnpm run format:eslint && pnpm run format:prettier",
