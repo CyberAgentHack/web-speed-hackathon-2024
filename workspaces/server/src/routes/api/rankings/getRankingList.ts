@@ -26,13 +26,22 @@ const route = createRoute({
   tags: ['[App] Rankings API'],
 });
 
+import NodeCache from "node-cache";
+const rankingCache = new NodeCache({ stdTTL: 60 });
+
 app.openapi(route, async (c) => {
   const query = c.req.valid('query');
+  const key = `${query.limit}-${query.offset}`
+  if (rankingCache.has(key)) {
+    const data = rankingCache.get(key)
+    return c.json(data);
+  }
   const res = await rankingRepository.readAll({ query });
 
   if (res.isErr()) {
     throw res.error;
   }
+  rankingCache.set(key, res.value)
   return c.json(res.value);
 });
 
