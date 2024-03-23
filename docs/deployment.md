@@ -7,7 +7,7 @@
 1. このレポジトリを自分のレポジトリに fork します
    - https://github.com/CyberAgentHack/web-speed-hackathon-2024/fork
 2. [Koyeb.com](https://app.koyeb.com/auth/signin) にログインします
-3. 「Create Web Servie」を選択します
+3. 「Create Web Service」を選択します
    - ![](./assets/315193605-3af9858e-ac66-428d-84ad-20ff2138a17d.png)
 4. 「GitHub」を選択します
    - ![](./assets/315193991-555ce520-c691-4857-b7a2-7425a5ee7dd0.png)
