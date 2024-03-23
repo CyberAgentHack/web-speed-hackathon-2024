@@ -2,6 +2,8 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad, waitForImageToLoad } from '../utils';
+
 const BOOK_ID = '29eeee80-c22e-4af7-83dd-d4de883f3d57';
 const BOOK_NAME = '夫婦様、デザートの時間です';
 const BOOK_DESC =
@@ -169,8 +171,7 @@ test.describe('作品一覧', () => {
     test('作品編集モーダルが表示されていること', async ({ page }) => {
       // Then
       const details = page.getByRole('dialog').getByRole('region', { name: '作品詳細' });
-      const img = details.getByRole('img', { name: BOOK_NAME });
-      await expect(img).toBeVisible();
+      await waitForAllImagesToLoad(details, 1);
       await expect(details).toContainText(BOOK_NAME);
       await expect(details).toContainText(BOOK_DESC);
       await expect(details).toHaveScreenshot('vrt-book-detail-section.png');
@@ -258,8 +259,7 @@ test.describe('作品一覧', () => {
       await page.getByRole('dialog').getByRole('button', { name: '決定' }).click();
 
       // Then
-      const img = page.getByRole('dialog').getByRole('img', { name: BOOK_NAME });
-      await expect(img).toBeVisible();
+      await waitForImageToLoad(page.getByRole('dialog').getByRole('img', { name: BOOK_NAME }));
     });
 
     test('編集ボタンをクリックして編集モードになっている状態で、作品名（ふりがな）、作品名、概要、画像に不正な値を入力すると、エラーメッセージが表示されること', async ({

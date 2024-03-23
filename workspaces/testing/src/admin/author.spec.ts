@@ -2,6 +2,8 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad, waitForImageToLoad } from '../utils';
+
 const AUTHOR_ID = '2ab0aca5-7dc2-4543-ac98-e23fdaca0739';
 const AUTHOR_NAME = 'サトウ リコ';
 const AUTHOR_NAME_HIRAGANA = 'さとう りこ';
@@ -93,8 +95,7 @@ test.describe('作者一覧', () => {
     test('作者編集モーダルが表示されていること', async ({ page }) => {
       // Then
       const authorDetailSection = page.getByRole('dialog').getByRole('region', { name: '作者詳細' });
-      const img = authorDetailSection.getByRole('img', { name: AUTHOR_NAME });
-      await expect(img).toBeVisible();
+      await waitForAllImagesToLoad(authorDetailSection, 1);
       await expect(authorDetailSection).toContainText(AUTHOR_NAME);
       await expect(authorDetailSection).toContainText(AUTHOR_DESC);
       await expect(authorDetailSection).toHaveScreenshot('vrt-author-detail-section.png');
@@ -164,7 +165,7 @@ test.describe('作者一覧', () => {
       await page.getByRole('dialog').getByRole('button', { name: '決定' }).click();
 
       // Then
-      await page.getByRole('dialog').getByRole('img', { name: AUTHOR_NAME }).waitFor();
+      await waitForImageToLoad(page.getByRole('dialog').getByRole('img', { name: AUTHOR_NAME }));
     });
 
     test('編集ボタンをクリックして編集モードになっている状態で、作者名、プロフィール、画像に不正な値を入力すると、エラーメッセージが表示されること', async ({

@@ -2,6 +2,8 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
+import { waitForImageToLoad } from '../utils';
+
 const BOOK_ID = '29eeee80-c22e-4af7-83dd-d4de883f3d57';
 const EPISODE_ID = '2915ff54-5ddb-4eb7-99a2-f415045622be';
 
@@ -130,7 +132,7 @@ test.describe('エピソード', () => {
         // Given
         const pages = page.getByRole('list', { name: 'ページ一覧' }).getByRole('listitem');
         for (let i = 0; i < 5; i++) {
-          await pages.nth(i).getByRole('img').waitFor();
+          await waitForImageToLoad(pages.nth(i).getByRole('img'));
         }
       });
 
@@ -166,7 +168,7 @@ test.describe('エピソード', () => {
         await fileChooser.setFiles(path.join(__dirname, 'image.jpg'));
 
         // Then
-        await expect(pages.last().getByRole('img')).toBeVisible();
+        await waitForImageToLoad(pages.last().getByRole('img'));
         await expect(pages.last().getByRole('img')).not.toHaveAttribute('alt', lastPageId!);
       });
     });
