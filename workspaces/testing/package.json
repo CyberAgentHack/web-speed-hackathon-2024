@@ -3,11 +3,11 @@
   "private": true,
   "scripts": {
     "start": "run-s start:client start:admin",
-    "start:client": "playwright test ./src/client --update-snapshots",
+    "start:client": "playwright test ./src/client",
     "start:admin": "playwright test --workers=1 ./src/admin",
-    "start:debug": "DEBUG=pw:api run-s start:client:debug start:admin:debug",
-    "start:client:debug": "playwright test --debug ./src/client",
-    "start:admin:debug": "playwright test --workers=1 --debug ./src/admin"
+    "start:debug": "run-s start:client:debug start:admin:debug",
+    "start:client:debug": "DEBUG=pw:api playwright test --debug ./src/client",
+    "start:admin:debug": "DEBUG=pw:api playwright test --workers=1 --debug ./src/admin"
   },
   "devDependencies": {
     "@playwright/test": "1.42.1",
