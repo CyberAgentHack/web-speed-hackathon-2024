@@ -1,0 +1,2 @@
+cp /Users/kasa/program/web-speed-hackathon/web-speed-hackathon-2024/workspaces/client/dist/metafile-iife.json ~/Documents/wsh/
+cd /Users/kasa/program/web-speed-hackathon/web-speed-hackathon-2024/workspaces/server/dist/metafile-cjs.json ~/Documents/wsh/
