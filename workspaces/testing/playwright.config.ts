@@ -29,7 +29,7 @@ export default defineConfig({
   timeout: 120_000,
   use: {
     baseURL: BASE_URL,
-    headless: false,
+    headless: true,
     trace: 'off',
   },
 });
