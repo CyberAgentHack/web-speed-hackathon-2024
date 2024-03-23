@@ -192,11 +192,11 @@ const ComicViewerCore: React.FC<Props> = ({ episodeId }) => {
       prevContentRect = entries[0]?.contentRect ?? null;
     };
 
-    scrollView?.addEventListener('pointerdown', handlePointerDown, { passive: false, signal: abortController.signal });
-    scrollView?.addEventListener('pointermove', handlePointerMove, { passive: false, signal: abortController.signal });
-    scrollView?.addEventListener('pointerup', handlePointerUp, { passive: false, signal: abortController.signal });
-    scrollView?.addEventListener('scroll', handleScroll, { passive: false, signal: abortController.signal });
-    scrollView?.addEventListener('scrollend', handleScrollEnd, { passive: false, signal: abortController.signal });
+    scrollView?.addEventListener('pointerdown', handlePointerDown, { passive: true, signal: abortController.signal });
+    scrollView?.addEventListener('pointermove', handlePointerMove, { passive: true, signal: abortController.signal });
+    scrollView?.addEventListener('pointerup', handlePointerUp, { passive: true, signal: abortController.signal });
+    scrollView?.addEventListener('scroll', handleScroll, { passive: true, signal: abortController.signal });
+    scrollView?.addEventListener('scrollend', handleScrollEnd, { passive: true, signal: abortController.signal });
 
     const resizeObserver = new ResizeObserver(handleResize);
     scrollView && resizeObserver.observe(scrollView);
