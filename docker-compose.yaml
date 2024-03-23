@@ -3,7 +3,7 @@ services:
     build:
       context: .
     ports:
-      - '${PORT:-8000}:8000'
+      - '${PORT:-10000}:10000'
     deploy:
       resources:
         limits:

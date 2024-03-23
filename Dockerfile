@@ -14,8 +14,8 @@ RUN corepack enable pnpm
 RUN pnpm install
 RUN pnpm build
 
-ENV PORT 8000
-EXPOSE 8000
+ENV PORT 10000 
+EXPOSE 10000
 
 ENTRYPOINT ["pnpm"]
 CMD ["start"]

@@ -18,6 +18,8 @@
 
 ### ビルド・起動
 
+> ℹ️ render.com にデプロイするブランチを用いる場合は、10000 ポートで起動します
+
 1. サーバー、アプリ、管理画面のコードをビルドします
    - ```bash
      pnpm run build
@@ -44,6 +46,8 @@ pnpm workspaces を採用しています。
 - `/workspaces/testing`: E2E テストと VRT の実行環境です
 
 ## API ドキュメント
+
+> ℹ️ render.com にデプロイするブランチを用いる場合は、10000 ポートで起動します
 
 API ドキュメントを Swagger UI で提供しています。
 

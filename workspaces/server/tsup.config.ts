@@ -15,9 +15,7 @@ export default defineConfig(async (): Promise<Options[]> => {
         server: path.resolve(PACKAGE_DIR, 'src/server.tsx'),
       },
       env: {
-        API_URL: process.env['KOYEB_PUBLIC_DOMAIN']
-          ? `https://${process.env['KOYEB_PUBLIC_DOMAIN']}`
-          : 'http://localhost:8000',
+        API_URL: process.env['RENDER_EXTERNAL_URL'] ?? 'http://localhost:10000',
         NODE_ENV: process.env['NODE_ENV'] || 'development',
       },
       format: 'cjs',
