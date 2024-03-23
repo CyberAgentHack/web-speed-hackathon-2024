@@ -11,7 +11,6 @@ import { imageApp } from './images';
 import { internalApp } from './internal';
 import { rankingApp } from './rankings';
 import { releaseApp } from './releases';
-import { cache } from 'hono/cache'
 
 const app = new OpenAPIHono();
 
@@ -24,10 +23,6 @@ app.doc31('/api/v1/specification', {
 });
 app.get(
   '/api/v1',
-  cache({
-    cacheName: 'my-app',
-    cacheControl: 'max-age=3600',
-  }),
   swaggerUI({
     url: '/api/v1/specification',
   }),
