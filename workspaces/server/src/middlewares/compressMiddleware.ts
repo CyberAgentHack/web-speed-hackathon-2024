@@ -21,12 +21,10 @@ export const compressMiddleware = createMiddleware(async (c, next) => {
       c.res = new Response(c.res.body?.pipeThrough(transform), c.res);
 
       c.res.headers.delete('Content-Length');
-      c.res.headers.append('Cache-Control', 'no-transform');
       c.res.headers.set('X-Content-Encoding', 'zstd');
       break;
     }
     default: {
-      c.res.headers.append('Cache-Control', 'no-transform');
       break;
     }
   }
