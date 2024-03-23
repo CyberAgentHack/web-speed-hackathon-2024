@@ -174,7 +174,7 @@ test.describe('エピソード', () => {
     });
 
     test.describe('エピソード情報の編集', () => {
-      test.only('エピソード情報がフォームとして表示されること', async ({ page }) => {
+      test('エピソード情報がフォームとして表示されること', async ({ page }) => {
         // Then
         const bookId = page.url().match(/\/books\/([a-z0-9-]+)\//)![1];
         await expect(page.getByRole('form', { name: 'エピソード情報' })).toContainText(bookId!);
@@ -204,7 +204,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { exact: true, name: 'エピソード名' })).toHaveValue(
           '私は夜空に届かない',
         );
@@ -217,7 +217,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { name: 'エピソード名（ふりがな）' })).toHaveValue(
           'わたしはよぞらにとどかない',
         );
@@ -232,7 +232,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { name: 'あらすじ' })).toHaveValue(replacement);
       });
 
@@ -243,7 +243,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('spinbutton', { name: 'エピソードの章' })).toHaveValue('2');
       });
 
