@@ -8,7 +8,7 @@ export const GetBookListResponseSchema = createSelectSchema(book)
     description: true,
     id: true,
     name: true,
-    nameRuby: true,
+    // nameRuby: true,
   })
   .extend({
     author: createSelectSchema(author)
@@ -19,17 +19,17 @@ export const GetBookListResponseSchema = createSelectSchema(book)
       })
       .extend({
         image: createSelectSchema(image).pick({
-          alt: true,
+          // alt: true,
           id: true,
         }),
       }),
-    episodes: createSelectSchema(episode)
-      .pick({
-        id: true,
-      })
-      .array(),
+    // episodes: createSelectSchema(episode)
+    //   .pick({
+    //     id: true,
+    //   })
+    //   .array(),
     image: createSelectSchema(image).pick({
-      alt: true,
+      // alt: true,
       id: true,
     }),
   })
