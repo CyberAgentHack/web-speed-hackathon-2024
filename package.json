@@ -12,7 +12,9 @@
     "lint:tsc": "tsc --noEmit",
     "start": "pnpm --filter \"@wsh-2024/server\" run start",
     "test": "pnpm --filter \"@wsh-2024/testing\" run start",
-    "test:debug": "pnpm --filter \"@wsh-2024/testing\" run start:debug"
+    "test:debug": "pnpm --filter \"@wsh-2024/testing\" run start:debug",
+    "test:unit": "vitest run"
+
   },
   "devDependencies": {
     "@3846masa/configs": "github:3846masa/configs#0e9352c7ad57e51187647f2c4aa27baea842d149",
@@ -20,7 +22,8 @@
     "eslint-plugin-react": "7.34.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "prettier": "3.1.1",
-    "typescript": "5.4.2"
+    "typescript": "5.4.2",
+    "vitest": "1.4.0"
   },
   "packageManager": "pnpm@8.15.4"
 }
