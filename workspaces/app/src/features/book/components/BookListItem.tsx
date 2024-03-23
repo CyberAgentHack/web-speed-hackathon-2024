@@ -1,3 +1,4 @@
+import { useInView } from '@react-spring/web';
 import styled from 'styled-components';
 
 import { Box } from '../../../foundation/components/Box';
@@ -33,11 +34,12 @@ type Props = {
 
 export const BookListItem: React.FC<Props> = ({ bookId }) => {
   const { data: book } = useBook({ params: { bookId } });
+  const [ref, inView] = useInView({ once: true });
 
-  const imageUrl = useImage({ height: 64, imageId: book.image.id, width: 64 });
+  const imageUrl = useImage({ height: 64, imageId: book.image.id, visible: inView, width: 64 });
 
   return (
-    <_Wrapper>
+    <_Wrapper ref={ref}>
       <_Link href={`/books/${book.id}`}>
         <Spacer height={Space * 1.5} />
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">

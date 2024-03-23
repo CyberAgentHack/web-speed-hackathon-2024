@@ -30,7 +30,6 @@ export const ActionLayout: React.FC<Props> = ({ leftContent, rightContent }) => 
       <Box as="main" height="100%" py={Space * 2}>
         <Outlet />
       </Box>
-
       <Footer />
     </Container>
   );

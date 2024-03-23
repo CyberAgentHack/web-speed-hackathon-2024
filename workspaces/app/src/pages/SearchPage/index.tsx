@@ -48,4 +48,4 @@ const SearchPageWithSuspense: React.FC = () => {
   );
 };
 
-export { SearchPageWithSuspense as SearchPage };
+export default SearchPageWithSuspense;

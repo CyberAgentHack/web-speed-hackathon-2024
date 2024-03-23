@@ -2,17 +2,28 @@ import { useAsync } from 'react-use';
 
 import { getImageUrl } from '../../lib/image/getImageUrl';
 
-export const useImage = ({ height, imageId, width }: { height: number; imageId: string; width: number }) => {
+export const useImage = ({
+  height,
+  imageId,
+  visible,
+  width,
+}: {
+  height: number;
+  imageId: string;
+  visible: boolean;
+  width: number;
+}) => {
   const { value } = useAsync(async () => {
     const dpr = window.devicePixelRatio;
-
     const img = new Image();
-    img.src = getImageUrl({
-      format: 'jpg',
-      height: height * dpr,
-      imageId,
-      width: width * dpr,
-    });
+    img.src = visible
+      ? getImageUrl({
+          format: 'jpg',
+          height: height * dpr,
+          imageId,
+          width: width * dpr,
+        })
+      : '';
 
     await img.decode();
 
@@ -40,7 +51,7 @@ export const useImage = ({ height, imageId, width }: { height: number; imageId: 
     }
 
     return canvas.toDataURL('image/png');
-  }, [height, imageId, width]);
+  }, [height, imageId, width, visible]);
 
   return value;
 };

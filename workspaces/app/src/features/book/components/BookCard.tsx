@@ -1,3 +1,4 @@
+import { useInView } from '@react-spring/web';
 import { Suspense } from 'react';
 import { styled } from 'styled-components';
 
@@ -38,12 +39,13 @@ type Props = {
 
 const BookCard: React.FC<Props> = ({ bookId }) => {
   const { data: book } = useBook({ params: { bookId } });
+  const [ref] = useInView({ once: true });
 
-  const imageUrl = useImage({ height: 128, imageId: book.image.id, width: 192 });
-  const authorImageUrl = useImage({ height: 32, imageId: book.author.image.id, width: 32 });
+  const imageUrl = useImage({ height: 128, imageId: book.image.id, visible: true, width: 192 });
+  const authorImageUrl = useImage({ height: 32, imageId: book.author.image.id, visible: true, width: 32 });
 
   return (
-    <_Wrapper href={`/books/${bookId}`}>
+    <_Wrapper ref={ref} href={`/books/${bookId}`}>
       {imageUrl != null && (
         <_ImgWrapper>
           <Image alt={book.image.alt} height={128} objectFit="cover" src={imageUrl} width={192} />

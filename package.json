@@ -2,7 +2,9 @@
   "private": true,
   "license": "MPL-2.0",
   "scripts": {
+    "a": "pnpm build && pnpm start",
     "build": "pnpm --filter \"@wsh-2024/client\" --filter \"@wsh-2024/server\" --parallel run build",
+    "build-w": "pnpm --filter \"@wsh-2024/client\" --filter \"@wsh-2024/server\" --parallel run build-w",
     "format": "pnpm run format:eslint && pnpm run format:prettier",
     "format:eslint": "eslint --fix --ext mts,cts,ts,tsx,mjs,cjs,js,jsx . || true",
     "format:prettier": "prettier --ignore-path .prettierignore --write '**/*.{mts,cts,ts,tsx,mjs,cjs,js,jsx,json}'",
@@ -11,6 +13,7 @@
     "lint:prettier": "prettier --ignore-path .prettierignore --check '**/*.{mts,cts,ts,tsx,mjs,cjs,js,jsx,json}'",
     "lint:tsc": "tsc --noEmit",
     "start": "pnpm --filter \"@wsh-2024/server\" run start",
+    "start-w": "pnpm --filter \"@wsh-2024/server\" run start --watch",
     "test": "pnpm --filter \"@wsh-2024/testing\" run start",
     "test:debug": "pnpm --filter \"@wsh-2024/testing\" run start:debug"
   },

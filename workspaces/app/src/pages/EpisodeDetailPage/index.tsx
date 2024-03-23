@@ -48,4 +48,4 @@ const EpisodeDetailPageWithSuspense: React.FC = () => {
   );
 };
 
-export { EpisodeDetailPageWithSuspense as EpisodeDetailPage };
+export default EpisodeDetailPageWithSuspense;

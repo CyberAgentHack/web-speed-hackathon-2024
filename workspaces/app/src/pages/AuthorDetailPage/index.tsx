@@ -1,3 +1,4 @@
+import { useInView } from '@react-spring/web';
 import { Suspense, useId } from 'react';
 import { useParams } from 'react-router-dom';
 import type { RouteParams } from 'regexparam';
@@ -37,12 +38,14 @@ const AuthorDetailPage: React.FC = () => {
 
   const { data: author } = useAuthor({ params: { authorId } });
 
-  const imageUrl = useImage({ height: 128, imageId: author.image.id, width: 128 });
+  const [ref, inView] = useInView({ once: true });
+
+  const imageUrl = useImage({ height: 128, imageId: author.image.id, visible: inView, width: 128 });
   const bookListA11yId = useId();
 
   return (
     <Box height="100%" px={Space * 2}>
-      <_HeadingWrapper aria-label="作者情報">
+      <_HeadingWrapper ref={ref} aria-label="作者情報">
         {imageUrl != null && (
           <_AuthorImageWrapper>
             <Image key={author.id} alt={author.name} height={128} objectFit="cover" src={imageUrl} width={128} />
@@ -94,4 +97,4 @@ const AuthorDetailPageWithSuspense: React.FC = () => {
   );
 };
 
-export { AuthorDetailPageWithSuspense as AuthorDetailPage };
+export default AuthorDetailPageWithSuspense;

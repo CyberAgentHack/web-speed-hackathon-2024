@@ -8,11 +8,12 @@ import { Text } from './foundation/components/Text';
 import { ActionLayout } from './foundation/layouts/ActionLayout';
 import { CommonLayout } from './foundation/layouts/CommonLayout';
 import { Color, Space, Typography } from './foundation/styles/variables';
-import { AuthorDetailPage } from './pages/AuthorDetailPage';
-import { BookDetailPage } from './pages/BookDetailPage';
-import { EpisodeDetailPage } from './pages/EpisodeDetailPage';
-import { SearchPage } from './pages/SearchPage';
 import { TopPage } from './pages/TopPage';
+
+const BookDetailPage = React.lazy(() => import('./pages/BookDetailPage'));
+const EpisodeDetailPage = React.lazy(() => import('./pages/EpisodeDetailPage'));
+const AuthorDetailPage = React.lazy(() => import('./pages/AuthorDetailPage'));
+const SearchPage = React.lazy(() => import('./pages/SearchPage'));
 
 const _BackToTopButton = styled(Link)`
   display: flex;
