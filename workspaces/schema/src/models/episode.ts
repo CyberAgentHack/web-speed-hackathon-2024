@@ -1,13 +1,14 @@
 /* eslint-disable sort/object-properties */
-import { randomUUID } from 'node:crypto';
+import {randomUUID} from 'node:crypto';
 
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import {index, integer, sqliteTable, text} from 'drizzle-orm/sqlite-core';
+
 
 export const episode = sqliteTable('episode', {
   // primary key
   id: text('id')
-    .primaryKey()
-    .$defaultFn(() => randomUUID()),
+  .primaryKey()
+  .$defaultFn(() => randomUUID()),
 
   // columns
   name: text('name').notNull(),
@@ -21,9 +22,13 @@ export const episode = sqliteTable('episode', {
 
   // metadata
   createdAt: text('created_at')
-    .notNull()
-    .$defaultFn(() => new Date().toISOString()),
+  .notNull()
+  .$defaultFn(() => new Date().toISOString()),
   updatedAt: text('updated_at')
-    .notNull()
-    .$defaultFn(() => new Date().toISOString()),
+  .notNull()
+  .$defaultFn(() => new Date().toISOString()),
+}, (table) => {
+  return {
+    bookIdChapterId: index("episode_book_id_chapter_idx").on(table.bookId, table.chapter),
+  };
 });

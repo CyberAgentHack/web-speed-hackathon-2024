@@ -1,7 +1,7 @@
 /* eslint-disable sort/object-properties */
 import { randomUUID } from 'node:crypto';
 
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { integer, sqliteTable, text, uniqueIndex} from 'drizzle-orm/sqlite-core';
 
 export const ranking = sqliteTable('ranking', {
   // primary key
@@ -22,4 +22,8 @@ export const ranking = sqliteTable('ranking', {
   updatedAt: text('updated_at')
     .notNull()
     .$defaultFn(() => new Date().toISOString()),
+}, (table) => {
+  return {
+    rankIdx: uniqueIndex("ranking_rank_idx").on(table.rank),
+  };
 });

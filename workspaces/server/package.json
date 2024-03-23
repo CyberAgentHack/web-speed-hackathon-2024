@@ -6,7 +6,8 @@
     "build:clean": "rm -rf ./dist",
     "build:copy": "cp -r ./seeds/images ./dist/images",
     "build:tsup": "tsup",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "generate": " pnpm drizzle-kit generate:sqlite"
   },
   "dependencies": {
     "@hapi/accept": "6.0.3",
