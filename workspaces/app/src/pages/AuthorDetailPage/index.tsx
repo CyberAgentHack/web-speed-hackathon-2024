@@ -45,7 +45,7 @@ const AuthorDetailPage: React.FC = () => {
       <_HeadingWrapper aria-label="作者情報">
         {imageUrl != null && (
           <_AuthorImageWrapper>
-            <Image key={author.id} alt={author.name} height={128} objectFit="cover" src={imageUrl} width={128} />
+            <Image key={author.id} alt={author.name} height={128} objectFit="cover" src={imageUrl} width={128} loading='lazy'/>
           </_AuthorImageWrapper>
         )}
 
