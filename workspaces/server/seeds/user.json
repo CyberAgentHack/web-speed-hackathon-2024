@@ -1,0 +1,11 @@
+[
+  {
+    "createdAt": "2024-01-07T08:30:20.055Z",
+    "description": "管理者アカウント",
+    "email": "administrator@example.com",
+    "id": "3a4d3f97-addb-4eaf-9d72-738abd301d94",
+    "imageId": "3a4d3f97-addb-4eaf-9d72-738abd301d94",
+    "password": "$2a$08$8KwWjCsgs1HzP.3Re.OP.u1SoDDbhq5k1b7B3gcntyziiFUf.kYcK",
+    "updatedAt": "2024-01-07T08:30:20.055Z"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "dayOfWeek": "sunday",
+    "id": "0bbc9a26-8b05-4536-98cb-a8c1c7cdd46b"
+  },
+  {
+    "dayOfWeek": "monday",
+    "id": "abb5607d-7fb0-4d98-9ba6-312bbd7391dd"
+  },
+  {
+    "dayOfWeek": "tuesday",
+    "id": "2b939ba0-2206-4b52-9941-75d4b82d8fd5"
+  },
+  {
+    "dayOfWeek": "wednesday",
+    "id": "6bed482b-511d-4f11-9b01-d5de900d1608"
+  },
+  {
+    "dayOfWeek": "thursday",
+    "id": "2bc0c548-c8af-464a-bc36-b98fe7b8fcc9"
+  },
+  {
+    "dayOfWeek": "friday",
+    "id": "61b14220-e68b-4dc8-990a-b337a0c36098"
+  },
+  {
+    "dayOfWeek": "saturday",
+    "id": "c16b75ca-c345-45b1-addd-9ad41274b19f"
+  }
+]

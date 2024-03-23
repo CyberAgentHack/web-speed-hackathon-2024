@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false,
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "target": "ESNext"
+  },
+  "exclude": ["**/dist"],
+  "extends": "@3846masa/configs/tsconfig.json",
+  "include": ["workspaces"]
+}

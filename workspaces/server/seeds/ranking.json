@@ -1,0 +1,302 @@
+[
+  {
+    "bookId": "7f31b07e-3a96-468f-8e54-0cf569a8ddbe",
+    "createdAt": "2024-03-21T00:58:47.461Z",
+    "id": "b13b80be-4ec4-413a-a976-200df621b61b",
+    "rank": 1
+  },
+  {
+    "bookId": "729006ad-78b7-4878-9660-0f98fb883d91",
+    "createdAt": "2024-03-21T21:34:36.024Z",
+    "id": "91a8dbcd-9201-4767-aac8-b1d0959b34e7",
+    "rank": 2
+  },
+  {
+    "bookId": "7de9f88e-34db-4006-b863-75154c02a12c",
+    "createdAt": "2024-03-21T10:21:49.539Z",
+    "id": "234e3ae2-63c5-49d4-850e-b437f29936a0",
+    "rank": 3
+  },
+  {
+    "bookId": "c3273a8d-9c44-456b-bfaa-819246e8fa7e",
+    "createdAt": "2024-03-21T03:45:45.957Z",
+    "id": "8954f124-a7ae-47d2-9078-f38c06b3018b",
+    "rank": 4
+  },
+  {
+    "bookId": "52b9788b-3909-4b29-bf28-ecad815799a8",
+    "createdAt": "2024-03-21T06:37:08.626Z",
+    "id": "82da6518-b440-4332-a01b-7040589235e3",
+    "rank": 5
+  },
+  {
+    "bookId": "799a8956-a639-45ac-b0ca-f12df012b800",
+    "createdAt": "2024-03-21T05:22:30.428Z",
+    "id": "935c22a1-7c84-4dee-8650-b3845a62ea77",
+    "rank": 6
+  },
+  {
+    "bookId": "52b9788b-3909-4b29-bf28-ecad815799a8",
+    "createdAt": "2024-03-21T21:13:59.842Z",
+    "id": "3196ce58-05c6-421a-b15b-4ba20c29baa2",
+    "rank": 7
+  },
+  {
+    "bookId": "c3c18aac-5c5d-4d78-921d-e02050c748f7",
+    "createdAt": "2024-03-21T22:06:58.165Z",
+    "id": "db42480f-e5e0-495a-9b57-b8ba804ca054",
+    "rank": 8
+  },
+  {
+    "bookId": "4ccbc91d-35f8-4436-b5bf-bc5609f55ed1",
+    "createdAt": "2024-03-21T08:33:21.790Z",
+    "id": "32757aa3-f570-4bca-8120-8acb349e3b7f",
+    "rank": 9
+  },
+  {
+    "bookId": "5447fa7e-c23a-4125-be66-d72af3cede33",
+    "createdAt": "2024-03-21T19:17:49.879Z",
+    "id": "52f818b7-4e84-4df1-a0b5-429da862af02",
+    "rank": 10
+  },
+  {
+    "bookId": "9f8ea21a-a242-4e7c-a8f2-bb003b20a675",
+    "createdAt": "2024-03-21T02:10:46.766Z",
+    "id": "523aa65b-19e9-4e82-a78c-50bf1130bd8f",
+    "rank": 11
+  },
+  {
+    "bookId": "e5fec6e0-07e5-4c9b-aa3d-622a7c5e0b31",
+    "createdAt": "2024-03-21T05:18:31.375Z",
+    "id": "ac6f250b-e559-44c5-8fd4-4def4eef31a9",
+    "rank": 12
+  },
+  {
+    "bookId": "5bde8760-11ec-4578-b394-8a5594993037",
+    "createdAt": "2024-03-21T02:18:01.047Z",
+    "id": "7e3c27ba-eb4f-48cc-97c4-bfa15e9b8a6b",
+    "rank": 13
+  },
+  {
+    "bookId": "e19b70fa-6c31-4813-a969-426858c9eb53",
+    "createdAt": "2024-03-21T00:39:45.476Z",
+    "id": "5207b14d-54ea-4039-91c9-b84c24e1091b",
+    "rank": 14
+  },
+  {
+    "bookId": "6d7b5063-5ffb-444d-8a52-74c2e970b83b",
+    "createdAt": "2024-03-21T09:19:03.448Z",
+    "id": "9170cc29-85a3-4001-972a-33c3a1324ac3",
+    "rank": 15
+  },
+  {
+    "bookId": "07900030-4cdb-45b5-977e-2a1ea186e90b",
+    "createdAt": "2024-03-21T03:58:59.411Z",
+    "id": "3262e207-2a1e-4e72-bb33-4624697f45a8",
+    "rank": 16
+  },
+  {
+    "bookId": "37c6bc3c-daaf-4511-b3b8-8e76b57133be",
+    "createdAt": "2024-03-21T08:50:29.718Z",
+    "id": "43c66f15-44d4-43ed-8037-8e4f9319428b",
+    "rank": 17
+  },
+  {
+    "bookId": "00be0a97-5923-4261-8805-fcf6b71d5764",
+    "createdAt": "2024-03-21T03:34:45.911Z",
+    "id": "f94fa870-0e50-47b7-bea6-d7126b29fe9e",
+    "rank": 18
+  },
+  {
+    "bookId": "076294e4-7417-4f0e-ac7d-e9fb52b67b87",
+    "createdAt": "2024-03-21T05:25:03.083Z",
+    "id": "2f66a0ee-c749-4dcd-bfd0-e9f911f790b4",
+    "rank": 19
+  },
+  {
+    "bookId": "548d3690-20bd-4b86-abe5-291b88ec0e66",
+    "createdAt": "2024-03-21T02:03:41.647Z",
+    "id": "63be0c60-f80f-445a-b3ea-a16dd9e4b5bd",
+    "rank": 20
+  },
+  {
+    "bookId": "7de025be-8f2c-4739-b961-95873e1fce9b",
+    "createdAt": "2024-03-21T11:15:04.411Z",
+    "id": "cc78debd-c54f-49d5-b79a-5d670202b1e0",
+    "rank": 21
+  },
+  {
+    "bookId": "7f2346f7-fbca-4f3b-bc49-8c5f60485874",
+    "createdAt": "2024-03-21T09:48:46.575Z",
+    "id": "d8c6d545-ac15-4fd2-8562-db9d15b9fef1",
+    "rank": 22
+  },
+  {
+    "bookId": "5ce806c3-e628-4bc0-98c6-cfedaed56873",
+    "createdAt": "2024-03-21T04:55:54.693Z",
+    "id": "4074036f-ddab-4e67-ac20-873591906f67",
+    "rank": 23
+  },
+  {
+    "bookId": "f68c8e8c-a2c2-4a2f-81f0-de39fa9ee6df",
+    "createdAt": "2024-03-21T11:53:20.497Z",
+    "id": "05a810fb-8538-4a4c-a55d-8c374710ff4d",
+    "rank": 24
+  },
+  {
+    "bookId": "670320b7-5da1-4643-8134-6a085ae3dce1",
+    "createdAt": "2024-03-21T08:05:38.469Z",
+    "id": "04634e2a-fefc-4ae8-a9b4-59b23db55557",
+    "rank": 25
+  },
+  {
+    "bookId": "ec3de4bb-1364-4585-9649-46ffa9636fe2",
+    "createdAt": "2024-03-21T16:31:58.569Z",
+    "id": "8e4c3ec6-e75e-466b-96d3-4a61f42f6fb9",
+    "rank": 26
+  },
+  {
+    "bookId": "64a2a31a-7409-4ba5-ab86-6bd145f9b77a",
+    "createdAt": "2024-03-20T23:05:48.000Z",
+    "id": "a3561684-0f81-407c-9a70-7d5df139b3c8",
+    "rank": 27
+  },
+  {
+    "bookId": "64a2a31a-7409-4ba5-ab86-6bd145f9b77a",
+    "createdAt": "2024-03-21T22:13:55.276Z",
+    "id": "808834d8-44c4-43ac-877f-8dd2b0af617e",
+    "rank": 28
+  },
+  {
+    "bookId": "ef0c9e24-e564-41a0-a9bf-5b87d99ef62d",
+    "createdAt": "2024-03-21T10:47:12.335Z",
+    "id": "805c62f2-ed0e-47d6-9855-bf8939439955",
+    "rank": 29
+  },
+  {
+    "bookId": "7768f057-9d13-4b99-bea7-58fd987ae54c",
+    "createdAt": "2024-03-21T20:44:41.108Z",
+    "id": "bbd83bba-ef18-48f1-88f5-c7ae7a65d21a",
+    "rank": 30
+  },
+  {
+    "bookId": "7eb3768f-60be-49c7-8791-bcccdfdd3341",
+    "createdAt": "2024-03-21T00:55:25.094Z",
+    "id": "bdf2484f-cff6-490e-a826-7bf3189e9e16",
+    "rank": 31
+  },
+  {
+    "bookId": "6d74e394-9fee-48e5-9002-3150e79eb529",
+    "createdAt": "2024-03-21T17:58:59.901Z",
+    "id": "814c36bb-e824-46e6-9aae-de0edb1c2c11",
+    "rank": 32
+  },
+  {
+    "bookId": "8d4ba9f3-5fac-4ece-9e81-81207a7262b0",
+    "createdAt": "2024-03-21T20:24:25.869Z",
+    "id": "f0206226-2d07-4152-8e9e-37ba50ef4921",
+    "rank": 33
+  },
+  {
+    "bookId": "29eeee80-c22e-4af7-83dd-d4de883f3d57",
+    "createdAt": "2024-03-21T07:15:16.406Z",
+    "id": "6abc8ef7-7327-4281-a224-3ed58c94f4d3",
+    "rank": 34
+  },
+  {
+    "bookId": "cb86c6e1-d50d-4c59-b80d-074c57f9eaae",
+    "createdAt": "2024-03-21T21:58:40.230Z",
+    "id": "62c991de-c3db-4b61-9c09-f8aa1cd88081",
+    "rank": 35
+  },
+  {
+    "bookId": "4e209804-7ac9-4eaf-9e0b-6bdd31d21fea",
+    "createdAt": "2024-03-21T01:23:04.471Z",
+    "id": "27c4e53b-4ab3-44b2-a609-d514a95ecd5f",
+    "rank": 36
+  },
+  {
+    "bookId": "e2cf976c-dafc-4eb4-aedf-2fb5a484a8e3",
+    "createdAt": "2024-03-21T09:53:09.041Z",
+    "id": "655635d5-5179-4cb4-b676-17fb3b5238a7",
+    "rank": 37
+  },
+  {
+    "bookId": "48a9e01b-61f7-42d0-bd4e-19a493fd45b1",
+    "createdAt": "2024-03-21T16:30:20.227Z",
+    "id": "eddad2bc-83b0-4214-840e-e686a3db0a9e",
+    "rank": 38
+  },
+  {
+    "bookId": "e4df4449-8a1d-4d11-920e-3d6e2ae4dd55",
+    "createdAt": "2024-03-21T03:51:41.001Z",
+    "id": "09b2002f-380f-42e0-af4f-389863e146b7",
+    "rank": 39
+  },
+  {
+    "bookId": "90d6dbee-758d-44ef-926a-7aaab6d56bd4",
+    "createdAt": "2024-03-21T08:10:10.170Z",
+    "id": "ed70ef7d-1931-462b-a2e3-6979b8438307",
+    "rank": 40
+  },
+  {
+    "bookId": "c3273a8d-9c44-456b-bfaa-819246e8fa7e",
+    "createdAt": "2024-03-21T08:08:49.826Z",
+    "id": "1924c56c-a4d6-4155-953c-464039d843c7",
+    "rank": 41
+  },
+  {
+    "bookId": "ddd5c698-d53c-47e4-8745-f4bc4465eda1",
+    "createdAt": "2024-03-21T03:50:58.510Z",
+    "id": "0781ec46-390d-4011-bc54-114739cf4f6a",
+    "rank": 42
+  },
+  {
+    "bookId": "aea84700-02d8-4db8-8286-68aac4a8c49c",
+    "createdAt": "2024-03-21T17:37:14.139Z",
+    "id": "8d28c5f8-ae97-4660-b621-b764535224d6",
+    "rank": 43
+  },
+  {
+    "bookId": "7bfeba24-407f-4288-84c4-a39a010a0468",
+    "createdAt": "2024-03-21T08:42:52.983Z",
+    "id": "de66a464-606b-40d3-93bf-c183e05c6e86",
+    "rank": 44
+  },
+  {
+    "bookId": "2e51fba8-a24d-421a-be68-e29f81e11450",
+    "createdAt": "2024-03-21T08:36:41.170Z",
+    "id": "88d89d43-c3f1-4ec0-8588-00467f1d1f04",
+    "rank": 45
+  },
+  {
+    "bookId": "b41fbd62-a9d7-428c-ae6c-f114df11b5fc",
+    "createdAt": "2024-03-21T14:37:02.549Z",
+    "id": "6ab3a789-55f6-40e0-826f-bc090c51701e",
+    "rank": 46
+  },
+  {
+    "bookId": "80172783-6712-4b22-8a5b-46fb001646be",
+    "createdAt": "2024-03-21T09:17:02.522Z",
+    "id": "b3e2878a-b4f6-4443-8073-89fa8275eee2",
+    "rank": 47
+  },
+  {
+    "bookId": "be591a9c-7b6a-42b8-ae33-7945a1a42037",
+    "createdAt": "2024-03-21T09:42:17.638Z",
+    "id": "fba435d1-b739-475b-93fc-9d44be04c4aa",
+    "rank": 48
+  },
+  {
+    "bookId": "e2dc1e67-7500-4db3-9def-4794cf94e7a3",
+    "createdAt": "2024-03-21T00:57:27.827Z",
+    "id": "74735458-f50e-4fe2-a865-1ef7449b5034",
+    "rank": 49
+  },
+  {
+    "bookId": "9703d511-b4ba-468e-87e1-368dbb602200",
+    "createdAt": "2024-03-21T11:48:32.977Z",
+    "id": "3cdc419d-78d9-4e32-8f44-4f6adba60b2d",
+    "rank": 50
+  }
+]

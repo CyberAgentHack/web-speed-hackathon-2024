@@ -1,0 +1,43 @@
+{
+  "name": "@wsh-2024/client",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
+    "build:clean": "rm -rf ./dist",
+    "build:copy": "cp -r ./assets ./dist/assets",
+    "build:tsup": "tsup"
+  },
+  "dependencies": {
+    "@jsquash/jxl": "1.1.0",
+    "@webcomponents/webcomponentsjs": "2.8.0",
+    "@wsh-2024/admin": "workspace:*",
+    "@wsh-2024/app": "workspace:*",
+    "core-js": "3.36.0",
+    "es5-shim": "4.6.7",
+    "es6-shim": "0.35.8",
+    "es7-shim": "6.0.0",
+    "fzstd": "0.1.0",
+    "jimp": "0.22.12",
+    "jquery": "3.7.1",
+    "p-queue": "8.0.1",
+    "path-browserify": "1.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.18.0",
+    "regenerator-runtime": "0.14.1",
+    "swr": "2.2.4",
+    "unorm": "1.6.0"
+  },
+  "devDependencies": {
+    "@node-kit/pnpm-workspace-root": "3.2.0",
+    "@types/jimp": "0.2.28",
+    "@types/jquery": "3.5.29",
+    "@types/path-browserify": "1.0.2",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "@types/serviceworker": "0.0.83",
+    "esbuild-plugin-polyfill-node": "0.3.0",
+    "pkg-dir": "5.0.0",
+    "tsup": "8.0.1"
+  }
+}
