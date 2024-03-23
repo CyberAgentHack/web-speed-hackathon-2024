@@ -54,14 +54,14 @@ export default defineConfig(async (): Promise<Options[]> => {
         '.wasm': 'binary',
       },
       metafile: true,
-      minify: false,
+      minify: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
       shims: true,
       sourcemap: 'inline',
-      splitting: false,
+      splitting: true,
       target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
-      treeshake: false,
+      treeshake: true,
     },
   ];
 });
