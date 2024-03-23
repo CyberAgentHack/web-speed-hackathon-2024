@@ -31,11 +31,13 @@
    - ![](./assets/815f76c2-68cd-499d-acc9-97b7b33f21f0.png)
 6. Fork したレポジトリを選択します。
    - ![](./assets/00948af6-0973-487e-b338-940e10e91ed6.png)
-7. Free プランを選択します。
+7. Branch は `deploy-render` を選択します。
+   - ![](./assets/746a8b87-3aee-4407-a4e4-450b3f7c49df.png)
+8. Free プランを選択します。
    - ![](./assets/1f6cf4b1-acdf-420d-b10d-4520c5ca5459.png)
-8. ほかはデフォルトのままで `Create Web Service` を選択します。
+9. ほかはデフォルトのままで `Create Web Service` を選択します。
    - ![](./assets/05ed655b-544d-4f77-998e-e0987a065550.png)
-9. フォークしたレポジトリの main ブランチが変更されると、自動でデプロイされます。
+10. フォークしたレポジトリの main ブランチが変更されると、自動でデプロイされます。
 
 ## Koyeb.com 外へデプロイする場合
 
