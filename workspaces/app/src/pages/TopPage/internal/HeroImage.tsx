@@ -115,7 +115,7 @@ void main() {
 
   return (
     <_Wrapper>
-      <_Image ref={imageRef} alt="Cyber TOON" />
+      <_Image ref={imageRef} alt="Cyber TOON" loading="lazy"/>
     </_Wrapper>
   );
 };
