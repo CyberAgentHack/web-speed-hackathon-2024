@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
 
   const handleRequestToTermDialogOpen = () => {
     updateDialogContent(
-      <_Content aria-labelledby={termDialogA11yId} role="dialog" aria-modal="true">
+      <_Content aria-labelledby={termDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={termDialogA11yId} typography={Typography.NORMAL16}>
           利用規約
         </Text>
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
 
   const handleRequestToContactDialogOpen = () => {
     updateDialogContent(
-      <_Content aria-labelledby={contactDialogA11yId} role="dialog" aria-modal="true">
+      <_Content aria-labelledby={contactDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={contactDialogA11yId} typography={Typography.NORMAL16}>
           お問い合わせ
         </Text>
