@@ -52,10 +52,11 @@ test.describe('サービストップ', () => {
     await expect(firstCard).toBeVisible();
     await section.scrollIntoViewIfNeeded();
     await expect(firstCardImg).toBeVisible();
-    await firstCard.evaluate((card) => {
+    const hasScroll = firstCard.evaluate((card) => {
       const wrapper = card.parentNode as HTMLDivElement;
       return wrapper.scrollWidth > wrapper.clientWidth;
     });
+    await expect(hasScroll).resolves.toBeTruthy();
   });
 
   test('ピックアップセクションでタブキーを10回押すと、11番目のカードが表示されること', async ({ page }) => {
@@ -111,13 +112,23 @@ test.describe('サービストップ', () => {
     await expect(page).toHaveURL(/\/books\/[a-z0-9-]+$/);
   });
 
-  test('本日更新セクションが表示されていること', async ({ page }) => {
+  test.only('本日更新セクションが表示されていること', async ({ page }) => {
     // Then
     const section = page.getByRole('region', { name: '本日更新' });
     await expect(section).toBeVisible();
     const firstCard = section.getByRole('link').first();
     const firstCardImg = firstCard.getByRole('img').first();
+    await firstCard.waitFor();
     await firstCardImg.waitFor();
+    await expect(async () => {
+      expect(
+        await (
+          await firstCard.evaluateHandle((element, prop) => {
+            return element[prop as keyof typeof element];
+          }, 'clientHeight')
+        ).jsonValue(),
+      ).toBeLessThan(245);
+    }).toPass();
     await expect(firstCard).toHaveScreenshot('vrt-today-updates-card.png');
   });
 
@@ -126,14 +137,13 @@ test.describe('サービストップ', () => {
     const section = page.getByRole('region', { name: '本日更新' });
     const firstCard = section.getByRole('link').first();
     const firstCardImg = firstCard.getByRole('img').first();
-    await section.scrollIntoViewIfNeeded();
     await expect(firstCard).toBeVisible();
-    await section.scrollIntoViewIfNeeded();
     await expect(firstCardImg).toBeVisible();
-    await firstCard.evaluate((card) => {
+    const hasScroll = firstCard.evaluate((card) => {
       const wrapper = card.parentNode as HTMLDivElement;
       return wrapper.scrollWidth > wrapper.clientWidth;
     });
+    await expect(hasScroll).resolves.toBeTruthy();
   });
 
   test('本日更新セクションの先頭のカードをクリックすると、作品詳細ページに遷移すること', async ({ page }) => {
