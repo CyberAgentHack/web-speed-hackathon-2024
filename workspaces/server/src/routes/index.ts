@@ -11,7 +11,9 @@ import { apiApp } from './api';
 import { imageApp } from './image';
 import { ssrApp } from './ssr';
 import { staticApp } from './static';
+import { Context } from 'hono';
 
+const compression = require('compression');
 const app = new Hono();
 
 app.use(secureHeaders());
@@ -26,6 +28,22 @@ app.use(
 );
 app.use(compressMiddleware);
 app.use(cacheControlMiddleware);
+// compressionミドルウェアをラップするカスタムミドルウェア
+const compressionMiddleware = async (c: Context, next: () => Promise<void>) => {
+  return new Promise<void>((resolve, reject) => {
+    const compressionHandler = compression();
+    compressionHandler(c.req, c.res, (err?: any) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(next());
+      }
+    });
+  });
+};
+
+app.use('*', compressionMiddleware);
+
 
 app.get('/healthz', (c) => {
   return c.body('live', 200);
