@@ -3,7 +3,8 @@ import fs from 'node:fs/promises';
 import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import jsesc from 'jsesc';
-import moment from 'moment-timezone';
+// import moment from 'moment-timezone';
+import dayjs from 'dayjs';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet } from 'styled-components';
@@ -23,7 +24,7 @@ async function createInjectDataStr(): Promise<Record<string, unknown>> {
   const json: Record<string, unknown> = {};
 
   {
-    const dayOfWeek = getDayOfWeekStr(moment());
+    const dayOfWeek = getDayOfWeekStr(dayjs());
     const releases = await releaseApiClient.fetch({ params: { dayOfWeek } });
     json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
   }

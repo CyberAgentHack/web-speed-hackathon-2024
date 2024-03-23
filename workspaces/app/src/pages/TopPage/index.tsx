@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import moment from 'moment-timezone';
 import { Suspense, useId } from 'react';
 
 import { BookCard } from '../../features/book/components/BookCard';
@@ -16,9 +15,10 @@ import { Color, Space, Typography } from '../../foundation/styles/variables';
 import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
 
 import { CoverSection } from './internal/CoverSection';
+import dayjs from 'dayjs';
 
 const TopPage: React.FC = () => {
-  const todayStr = getDayOfWeekStr(moment());
+  const todayStr = getDayOfWeekStr(dayjs());
   const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
   const { data: featureList } = useFeatureList({ query: {} });
   const { data: rankingList } = useRankingList({ query: {} });
