@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Mesh, OrthographicCamera, PlaneGeometry, Scene, ShaderMaterial, TextureLoader, WebGLRenderer } from 'three';
 
 import { IMAGE_SRC } from './ImageSrc';
+import React from 'react';
 
 const _Wrapper = styled.div`
   aspect-ratio: 16 / 9;
@@ -115,7 +116,7 @@ void main() {
 
   return (
     <_Wrapper>
-      <_Image ref={imageRef} alt="Cyber TOON" loading="lazy"/>
+      <_Image ref={imageRef} alt="Cyber TOON" loading="eager"/>
     </_Wrapper>
   );
 };
