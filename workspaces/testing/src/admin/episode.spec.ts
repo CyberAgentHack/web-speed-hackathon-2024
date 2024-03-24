@@ -2,6 +2,8 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
+import { waitForImageToLoad } from '../utils';
+
 const BOOK_ID = '29eeee80-c22e-4af7-83dd-d4de883f3d57';
 const EPISODE_ID = '2915ff54-5ddb-4eb7-99a2-f415045622be';
 
@@ -40,7 +42,7 @@ test.describe('エピソード', () => {
       await page.getByRole('dialog').getByRole('button', { name: 'エピソードを追加' }).click();
     });
 
-    test.only('必要な情報を入力して作成ボタンを押すと、エピソード編集画面に遷移して入力したデータが表示されること', async ({
+    test('必要な情報を入力して作成ボタンを押すと、エピソード編集画面に遷移して入力したデータが表示されること', async ({
       page,
     }) => {
       // When
@@ -130,7 +132,7 @@ test.describe('エピソード', () => {
         // Given
         const pages = page.getByRole('list', { name: 'ページ一覧' }).getByRole('listitem');
         for (let i = 0; i < 5; i++) {
-          await pages.nth(i).getByRole('img').waitFor();
+          await waitForImageToLoad(pages.nth(i).getByRole('img'));
         }
       });
 
@@ -166,13 +168,13 @@ test.describe('エピソード', () => {
         await fileChooser.setFiles(path.join(__dirname, 'image.jpg'));
 
         // Then
-        await expect(pages.last().getByRole('img')).toBeVisible();
+        await waitForImageToLoad(pages.last().getByRole('img'));
         await expect(pages.last().getByRole('img')).not.toHaveAttribute('alt', lastPageId!);
       });
     });
 
     test.describe('エピソード情報の編集', () => {
-      test.only('エピソード情報がフォームとして表示されること', async ({ page }) => {
+      test('エピソード情報がフォームとして表示されること', async ({ page }) => {
         // Then
         const bookId = page.url().match(/\/books\/([a-z0-9-]+)\//)![1];
         await expect(page.getByRole('form', { name: 'エピソード情報' })).toContainText(bookId!);
@@ -202,7 +204,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { exact: true, name: 'エピソード名' })).toHaveValue(
           '私は夜空に届かない',
         );
@@ -215,7 +217,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { name: 'エピソード名（ふりがな）' })).toHaveValue(
           'わたしはよぞらにとどかない',
         );
@@ -230,7 +232,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('textbox', { name: 'あらすじ' })).toHaveValue(replacement);
       });
 
@@ -241,7 +243,7 @@ test.describe('エピソード', () => {
         await page.getByRole('button', { name: '更新' }).click();
 
         // Then
-        page.getByRole('button', { name: '更新' }).waitFor();
+        await page.getByRole('button', { name: '更新' }).waitFor();
         await expect(page.getByRole('spinbutton', { name: 'エピソードの章' })).toHaveValue('2');
       });
 

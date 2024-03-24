@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad } from '../utils';
+
 const BOOK_ID = 'af7583e6-e52e-4f28-86dd-04f0af9d4868';
 const BOOK_TITLE = '異世界教え子';
 const BOOK_DESC =
@@ -15,8 +17,7 @@ test.describe('作品', () => {
   test('作品情報にカバー画像、タイトル、説明、作者が表示されていること', async ({ page }) => {
     // Then
     const section = page.getByRole('region', { name: '作品情報' });
-    const img = section.getByRole('img', { name: BOOK_TITLE });
-    await expect(img).toBeVisible();
+    await waitForAllImagesToLoad(section, 2);
     await expect(section).toContainText(BOOK_TITLE);
     await expect(section).toContainText(BOOK_DESC);
     await expect(section).toContainText(BOOK_AUTHOR);
@@ -43,8 +44,7 @@ test.describe('作品', () => {
     // Then
     const section = page.getByRole('region', { name: 'エピソード一覧' });
     const firstEpisode = section.getByRole('listitem').first();
-    const img = firstEpisode.getByRole('img');
-    await expect(img).toBeVisible();
+    await waitForAllImagesToLoad(firstEpisode, 2);
     await expect(firstEpisode).toContainText('第1話');
     await expect(firstEpisode).toHaveScreenshot('vrt-episode.png');
   });

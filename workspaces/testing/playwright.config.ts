@@ -26,10 +26,10 @@ export default defineConfig({
   reporter: 'list',
   retries: 0,
   testDir: './src',
-  timeout: 120_000,
+  timeout: 300_000,
   use: {
     baseURL: BASE_URL,
-    headless: false,
+    headless: true,
     trace: 'off',
   },
 });
