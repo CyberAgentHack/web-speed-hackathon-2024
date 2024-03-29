@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad } from '../utils';
+
 const AUTHOR_ID = '2ab0aca5-7dc2-4543-ac98-e23fdaca0739';
 const AUTHOR_NAME = 'サトウ リコ';
 const AUTHOR_DESC =
@@ -15,8 +17,7 @@ test.describe('作者', () => {
   test('作者情報にカバー画像、名前、説明が表示されていること', async ({ page }) => {
     // Then
     const section = page.getByRole('region', { name: '作者情報' });
-    const img = section.getByRole('img', { name: AUTHOR_NAME });
-    await expect(img).toBeVisible();
+    await waitForAllImagesToLoad(section, 1);
     await expect(section).toContainText(AUTHOR_NAME);
     await expect(section).toContainText(AUTHOR_DESC);
     await expect(section).toHaveScreenshot('vrt-author-info.png');
@@ -32,8 +33,7 @@ test.describe('作者', () => {
     // Then
     const section = page.getByRole('region', { name: '作品一覧' });
     const firstBook = section.getByRole('listitem').first();
-    const img = firstBook.getByRole('img');
-    await expect(img).toBeVisible();
+    await waitForAllImagesToLoad(firstBook, 2);
     await expect(firstBook).toContainText(BOOK_TITLE);
     await expect(firstBook).toHaveScreenshot('vrt-book.png');
   });

@@ -2,6 +2,8 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad, waitForImageToLoad } from '../utils';
+
 test.describe('サービストップ', () => {
   test.beforeEach(async ({ context, page }) => {
     await context.addInitScript({
@@ -20,7 +22,7 @@ test.describe('サービストップ', () => {
     // Then
     const header = page.getByRole('banner');
     const heroImg = header.getByRole('img', { name: 'Cyber TOON' });
-    await expect(heroImg).toBeVisible();
+    await waitForImageToLoad(heroImg);
     await expect(heroImg).toHaveScreenshot('vrt-hero-img.png');
   });
 
@@ -34,35 +36,36 @@ test.describe('サービストップ', () => {
   });
 
   test('ピックアップセクションが表示されていること', async ({ page }) => {
-    // Then
+    // When
     const section = page.getByRole('region', { name: 'ピックアップ' });
-    await expect(section).toBeVisible();
     const firstCard = section.getByRole('link').first();
-    const firstCardImg = firstCard.getByRole('img').first();
-    await firstCardImg.waitFor();
+    await waitForAllImagesToLoad(firstCard, 2);
+
+    // Then
     await expect(firstCard).toHaveScreenshot('vrt-pickup-card.png');
   });
 
   test('ピックアップセクションで横スクロールバーが表示されていること', async ({ page }) => {
-    // Then
+    // When
     const section = page.getByRole('region', { name: 'ピックアップ' });
     const firstCard = section.getByRole('link').first();
-    const firstCardImg = firstCard.getByRole('img').first();
-    await section.scrollIntoViewIfNeeded();
-    await expect(firstCard).toBeVisible();
-    await section.scrollIntoViewIfNeeded();
-    await expect(firstCardImg).toBeVisible();
-    await firstCard.evaluate((card) => {
+    await waitForAllImagesToLoad(firstCard, 2);
+    await waitForAllImagesToLoad(section, 3);
+
+    // Then
+    const hasScroll = firstCard.evaluate((card) => {
       const wrapper = card.parentNode as HTMLDivElement;
       return wrapper.scrollWidth > wrapper.clientWidth;
     });
+    await expect(hasScroll).resolves.toBeTruthy();
   });
 
   test('ピックアップセクションでタブキーを10回押すと、11番目のカードが表示されること', async ({ page }) => {
     // Given
     const section = page.getByRole('region', { name: 'ピックアップ' });
     const firstCard = section.getByRole('link').first();
-    await expect(firstCard).toBeVisible();
+    await waitForAllImagesToLoad(firstCard, 2);
+    await waitForAllImagesToLoad(section, 3);
     await firstCard.focus();
 
     // When
@@ -91,12 +94,12 @@ test.describe('サービストップ', () => {
   });
 
   test('ランキングセクションが表示されていること', async ({ page }) => {
-    // Then
+    // When
     const section = page.getByRole('region', { name: 'ランキング' });
-    await expect(section).toBeVisible();
     const firstCard = section.getByRole('listitem').first();
-    const firstCardImg = firstCard.getByRole('img').first();
-    await firstCardImg.waitFor();
+    await waitForAllImagesToLoad(firstCard, 2);
+
+    // Then
     await expect(firstCard).toContainText('この漫画を読む');
     await expect(firstCard).toHaveScreenshot('vrt-ranking-card.png');
   });
@@ -112,28 +115,45 @@ test.describe('サービストップ', () => {
   });
 
   test('本日更新セクションが表示されていること', async ({ page }) => {
-    // Then
+    // When
     const section = page.getByRole('region', { name: '本日更新' });
-    await expect(section).toBeVisible();
     const firstCard = section.getByRole('link').first();
-    const firstCardImg = firstCard.getByRole('img').first();
-    await firstCardImg.waitFor();
+    await waitForAllImagesToLoad(firstCard, 2);
+    await expect(async () => {
+      expect(
+        await (
+          await firstCard.evaluateHandle((element, prop) => {
+            return element[prop as keyof typeof element];
+          }, 'clientHeight')
+        ).jsonValue(),
+      ).toBeLessThan(245);
+    }).toPass();
+
+    // Then
     await expect(firstCard).toHaveScreenshot('vrt-today-updates-card.png');
   });
 
   test('本日更新セクションで横スクロールバーが表示されていること', async ({ page }) => {
-    // Then
+    // When
     const section = page.getByRole('region', { name: '本日更新' });
     const firstCard = section.getByRole('link').first();
-    const firstCardImg = firstCard.getByRole('img').first();
-    await section.scrollIntoViewIfNeeded();
-    await expect(firstCard).toBeVisible();
-    await section.scrollIntoViewIfNeeded();
-    await expect(firstCardImg).toBeVisible();
-    await firstCard.evaluate((card) => {
+    await waitForAllImagesToLoad(section, 4);
+    await expect(async () => {
+      expect(
+        await (
+          await firstCard.evaluateHandle((element, prop) => {
+            return element[prop as keyof typeof element];
+          }, 'clientHeight')
+        ).jsonValue(),
+      ).toBeLessThan(245);
+    }).toPass();
+
+    // Then
+    const hasScroll = firstCard.evaluate((card) => {
       const wrapper = card.parentNode as HTMLDivElement;
       return wrapper.scrollWidth > wrapper.clientWidth;
     });
+    await expect(hasScroll).resolves.toBeTruthy();
   });
 
   test('本日更新セクションの先頭のカードをクリックすると、作品詳細ページに遷移すること', async ({ page }) => {

@@ -1,5 +1,7 @@
 import { devices, expect, test } from '@playwright/test';
 
+import { waitForAllImagesToLoad } from '../utils';
+
 const BOOK_ID = '670abeed-7c82-4d7a-a997-cd86c362b9b8';
 const EPISODE_ID = 'fe2c26de-6bf7-4564-a4dc-d0b88cba8b22';
 
@@ -94,8 +96,7 @@ test.describe('エピソード', () => {
     const section = page.getByRole('region', { name: 'エピソード一覧' });
     await expect(section).toBeVisible();
     const firstEpisode = section.getByRole('listitem').first();
-    const firstEpisodeImg = firstEpisode.getByRole('img');
-    await expect(firstEpisodeImg).toBeVisible();
+    await waitForAllImagesToLoad(firstEpisode, 2);
     await expect(firstEpisode).toContainText('第1話');
     await expect(firstEpisode).toHaveScreenshot('vrt-episode.png');
   });
