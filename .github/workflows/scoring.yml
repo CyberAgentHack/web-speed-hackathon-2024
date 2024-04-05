@@ -1,0 +1,32 @@
+name: Scoring
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  issues: write
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    outputs:
+      comment-id: ${{ steps.comment.outputs.comment-id }}
+    steps:
+      - name: Comment
+        id: comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+
+        with:
+          issue-number: ${{ vars.SCORING_ISSUE_NUMBER }}
+          body: |
+            ## レギュレーションチェック
+
+            :hourglass_flowing_sand: **VRT を実行しています**
+
+            ---
+
+            Actions: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
