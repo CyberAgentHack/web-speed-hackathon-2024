@@ -1,0 +1,15 @@
+{
+  "name": "@wsh-2024/scoring",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx ./src/index.ts"
+  },
+  "devDependencies": {
+    "chrome-launcher": "1.1.1",
+    "citty": "0.1.6",
+    "lighthouse": "11.7.0",
+    "puppeteer": "22.6.2",
+    "tsx": "4.7.1"
+  }
+}

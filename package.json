@@ -12,7 +12,8 @@
     "lint:tsc": "tsc --noEmit",
     "start": "pnpm --filter \"@wsh-2024/server\" run start",
     "test": "pnpm --filter \"@wsh-2024/testing\" run start",
-    "test:debug": "pnpm --filter \"@wsh-2024/testing\" run start:debug"
+    "test:debug": "pnpm --filter \"@wsh-2024/testing\" run start:debug",
+    "scoring": "pnpm --filter \"@wsh-2024/scoring\" run start"
   },
   "devDependencies": {
     "@3846masa/configs": "github:3846masa/configs#0e9352c7ad57e51187647f2c4aa27baea842d149",
