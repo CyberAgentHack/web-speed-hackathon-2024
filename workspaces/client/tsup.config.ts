@@ -41,11 +41,6 @@ export default defineConfig(async (): Promise<Options[]> => {
           globals: {
             process: false,
           },
-          polyfills: {
-            events: true,
-            fs: true,
-            path: true,
-          },
         }),
       ],
       format: 'iife',
