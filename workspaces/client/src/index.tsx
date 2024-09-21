@@ -51,9 +51,13 @@ const renderClientApp = () => {
  * アプリケーションの初期化処理を行う
  */
 const main = async () => {
+  console.log("Initializing app...");
+
   try {
     // 並列で非同期処理を実行
     await Promise.all([registerServiceWorker(), preloadImages()]);
+
+    console.log("App initialized");
 
     // URLパスによってレンダリングするアプリケーションを切り替え
     if (window.location.pathname.startsWith('/admin')) {
@@ -61,6 +65,7 @@ const main = async () => {
     } else {
       renderClientApp();
     }
+    console.log("App rendered");
   } catch (error) {
     console.error("Error during app initialization:", error);
   }

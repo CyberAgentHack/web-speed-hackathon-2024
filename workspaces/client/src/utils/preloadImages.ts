@@ -5,6 +5,7 @@ async function wait(milliseconds: number) {
 }
 
 export async function preloadImages() {
+  console.log('Preloading images...');
   if (process.env['PATH_LIST'] == null) {
     return;
   }
@@ -13,6 +14,7 @@ export async function preloadImages() {
     const extension = path.parse(imagePath).ext.toLowerCase();
     return ['.bmp', '.jpg', '.jpeg', '.gif', '.png', '.webp', '.avif'].includes(extension);
   });
+  console.log(process.env['PATH_LIST']);
 
   const prefetch = Promise.all(
     imagePathList.map((imagePath) => {
@@ -34,4 +36,6 @@ export async function preloadImages() {
   );
 
   await Promise.race([prefetch, wait(5000)]);
+
+  console.log('Images preloaded');
 }
