@@ -8,6 +8,8 @@ import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
 import { useBook } from '../hooks/useBook';
+import { GetReleaseListResponse } from '@wsh-2024/schema/src/api/releases/GetReleaseListResponse';
+import { GetReleaseResponse } from '@wsh-2024/schema/src/api/releases/GetReleaseResponse';
 
 const _Wrapper = styled(Link)`
   display: flex;
@@ -32,18 +34,32 @@ const _AvatarWrapper = styled.div`
   }
 `;
 
+type BookSummary = {
+  id: string;
+  name: string;
+  image: {
+    alt: string;
+    id: string;
+  };
+  author: {
+    name: string;
+    image: {
+      id: string;
+    };
+  };
+}
+
 type Props = {
-  bookId: string;
+  book: BookSummary
 };
 
-const BookCard: React.FC<Props> = ({ bookId }) => {
-  const { data: book } = useBook({ params: { bookId } });
+const BookCard: React.FC<Props> = ({ book }) => {
 
   const imageUrl = useImage({ height: 128, imageId: book.image.id, width: 192 });
   const authorImageUrl = useImage({ height: 32, imageId: book.author.image.id, width: 32 });
 
   return (
-    <_Wrapper href={`/books/${bookId}`}>
+    <_Wrapper href={`/books/${book.id}`}>
       {imageUrl != null && (
         <_ImgWrapper>
           <Image alt={book.image.alt} height={128} objectFit="cover" src={imageUrl} width={192} />
