@@ -24,6 +24,7 @@ const _BackToTopButton = styled(Link)`
 `;
 
 export const Router: React.FC = () => {
+  console.log('Router');
   return (
     <Routes>
       <Route element={<CommonLayout />} path={'/'}>

@@ -19,13 +19,15 @@ import { CoverSection } from './internal/CoverSection';
 
 const TopPage: React.FC = () => {
   const todayStr = getDayOfWeekStr(moment());
-  const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
-  const { data: featureList } = useFeatureList({ query: {} });
-  const { data: rankingList } = useRankingList({ query: {} });
 
+  const { data: release, isLoading: releaseIsLoading } = useRelease({ params: { dayOfWeek: todayStr } });
+  const { data: featureList, isLoading: featureListIsLoading } = useFeatureList({ query: {} });
+  const { data: rankingList, isLoading: rankingListIsLoading } = useRankingList({ query: {} });
+  
   const pickupA11yId = useId();
   const rankingA11yId = useId();
   const todayA11yId = useId();
+
 
   return (
     <Flex align="flex-start" direction="column" gap={Space * 2} justify="center" pb={Space * 2}>
@@ -40,7 +42,8 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" direction="row" gap={Space * 2} justify="flex-start">
-              {_.map(featureList, (feature) => (
+              { !featureListIsLoading &&
+                _.map(featureList, (feature) => (
                 <FeatureCard key={feature.id} bookId={feature.book.id} />
               ))}
             </Flex>
@@ -56,7 +59,8 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
-              {_.map(rankingList, (ranking) => (
+              { !rankingListIsLoading &&
+              _.map(rankingList, (ranking) => (
                 <RankingCard key={ranking.id} bookId={ranking.book.id} />
               ))}
             </Flex>
@@ -72,7 +76,8 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" gap={Space * 2} justify="flex-start">
-              {_.map(release.books, (book) => (
+              { !releaseIsLoading &&
+              _.map(release.books, (book) => (
                 <BookCard key={book.id} bookId={book.id} />
               ))}
             </Flex>
@@ -84,6 +89,7 @@ const TopPage: React.FC = () => {
 };
 
 const TopPageWithSuspense: React.FC = () => {
+  console.log('TopPageWithSuspense');
   return (
     <Suspense fallback={null}>
       <TopPage />
