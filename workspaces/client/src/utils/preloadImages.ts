@@ -14,7 +14,6 @@ export async function preloadImages() {
     const extension = path.parse(imagePath).ext.toLowerCase();
     return ['.bmp', '.jpg', '.jpeg', '.gif', '.png', '.webp', '.avif'].includes(extension);
   });
-  console.log(process.env['PATH_LIST']);
 
   const prefetch = Promise.all(
     imagePathList.map((imagePath) => {

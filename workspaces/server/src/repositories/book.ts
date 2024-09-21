@@ -111,26 +111,26 @@ class BookRepository implements BookRepositoryInterface {
           return;
         },
         with: {
-          author: {
-            columns: {
-              description: true,
-              id: true,
-              name: true,
-            },
-            with: {
-              image: {
-                columns: {
-                  alt: true,
-                  id: true,
-                },
-              },
-            },
-          },
-          episodes: {
-            columns: {
-              id: true,
-            },
-          },
+          // author: {
+          //   columns: {
+          //     description: true,
+          //     id: true,
+          //     name: true,
+          //   },
+          //   with: {
+          //     image: {
+          //       columns: {
+          //         alt: true,
+          //         id: true,
+          //       },
+          //     },
+          //   },
+          // },
+          // episodes: {
+          //   columns: {
+          //     id: true,
+          //   },
+          // },
           image: {
             columns: {
               alt: true,

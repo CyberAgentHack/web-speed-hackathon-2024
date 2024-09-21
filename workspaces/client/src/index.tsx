@@ -55,7 +55,8 @@ const main = async () => {
 
   try {
     // 並列で非同期処理を実行
-    await Promise.all([registerServiceWorker(), preloadImages()]);
+    // await Promise.all([registerServiceWorker(), preloadImages()]);
+    await Promise.all([registerServiceWorker()]);
 
     console.log("App initialized");
 
