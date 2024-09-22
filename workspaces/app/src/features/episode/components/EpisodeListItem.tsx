@@ -27,13 +27,23 @@ const _ImgWrapper = styled.div`
   }
 `;
 
-type Props = {
-  bookId: string;
-  episodeId: string;
+type Episode = {
+  image: {
+      id: string;
+      alt: string;
+  };
+  id: string;
+  name: string;
+  description: string;
+  chapter: number;
 };
 
-export const EpisodeListItem: React.FC<Props> = ({ bookId, episodeId }) => {
-  const { data: episode } = useEpisode({ params: { episodeId } });
+type Props = {
+  bookId: string;
+  episode: Episode;
+};
+
+export const EpisodeListItem: React.FC<Props> = ({ bookId, episode }) => {
 
   const imageUrl = useImage({ height: 96, imageId: episode.image.id, width: 96 });
 

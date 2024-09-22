@@ -17,6 +17,9 @@ import type { PostBookResponse } from '@wsh-2024/schema/src/api/books/PostBookRe
 import { author, book, episode, episodePage, feature, ranking } from '@wsh-2024/schema/src/models';
 
 import { getDatabase } from '../database/drizzle';
+import { GetBookDetailParams } from '@wsh-2024/schema/src/api/books/GetBookDetailParams';
+import { except } from 'drizzle-orm/mysql-core';
+import { GetBookDetailResponse } from '@wsh-2024/schema/src/api/books/GetBookDetailResponse';
 
 type BookRepositoryInterface = {
   create(options: { body: PostBookRequestBody }): Promise<Result<PostBookResponse, HTTPException>>;
@@ -146,6 +149,73 @@ class BookRepository implements BookRepositoryInterface {
         return err(cause);
       }
       return err(new HTTPException(500, { cause, message: `Failed to read book list.` }));
+    }
+  }
+
+  async readDetail(options: { params: GetBookDetailParams }): Promise<Result<GetBookDetailResponse, HTTPException>> {
+    try {
+      const data = await getDatabase().query.book.findFirst({
+        columns: {
+          description: true,
+          id: true,
+          name: true,
+          nameRuby: true,
+        },
+        where(book, { eq }) {
+          return eq(book.id, options.params.bookId);
+        },
+        with: {
+          author: {
+            columns: {
+              description: true,
+              id: true,
+              name: true,
+            },
+            with: {
+              image: {
+                columns: {
+                  alt: true,
+                  id: true,
+                },
+              },
+            },
+          },
+          episodes: {
+            columns: {
+              id: true,
+              name: true,
+              description: true,
+              chapter: true,
+            },
+            with: {
+              image: {
+                columns: {
+                  alt: true,
+                  id: true,
+                },
+              },
+            },
+          },
+          image: {
+            columns: {
+              alt: true,
+              id: true,
+            },
+          },
+        },
+      });
+
+      if (data == null) {
+        throw new HTTPException(404, { message: `Book:${options.params.bookId} is not found` });
+      }
+
+      return ok(data);
+    }
+    catch (cause) {
+      if (cause instanceof HTTPException) {
+        return err(cause);
+      }
+      return err(new HTTPException(500, { cause, message: `Failed to read book:${options.params.bookId}.` }));
     }
   }
 

@@ -6,7 +6,7 @@ import { styled } from 'styled-components';
 import invariant from 'tiny-invariant';
 
 import { FavoriteBookAtomFamily } from '../../features/book/atoms/FavoriteBookAtomFamily';
-import { useBook } from '../../features/book/hooks/useBook';
+import { useBookDetail } from '../../features/book/hooks/useBookDetail';
 import { EpisodeListItem } from '../../features/episode/components/EpisodeListItem';
 import { useEpisodeList } from '../../features/episode/hooks/useEpisodeList';
 import { Box } from '../../foundation/components/Box';
@@ -20,6 +20,7 @@ import { useImage } from '../../foundation/hooks/useImage';
 import { Color, Space, Typography } from '../../foundation/styles/variables';
 
 import { BottomNavigator } from './internal/BottomNavigator';
+import { data } from 'jquery';
 
 const _HeadingWrapper = styled.section`
   display: grid;
@@ -49,8 +50,8 @@ const BookDetailPage: React.FC = () => {
   const { bookId } = useParams<RouteParams<'/books/:bookId'>>();
   invariant(bookId);
 
-  const { data: book } = useBook({ params: { bookId } });
-  const { data: episodeList } = useEpisodeList({ query: { bookId } });
+  const { data: book } = useBookDetail({ params: { bookId } });
+  // const { data: episodeList } = useEpisodeList({ query: { bookId } });
 
   const [isFavorite, toggleFavorite] = useAtom(FavoriteBookAtomFamily(bookId));
 
@@ -61,7 +62,8 @@ const BookDetailPage: React.FC = () => {
     toggleFavorite();
   }, [toggleFavorite]);
 
-  const latestEpisode = episodeList?.find((episode) => episode.chapter === 1);
+  // const latestEpisode = episodeList?.find((episode) => episode.chapter === 1);
+  const latestEpisode = book.episodes.find((episode) => episode.chapter === 1);
 
   return (
     <Box height="100%" position="relative" px={Space * 2}>
@@ -106,10 +108,10 @@ const BookDetailPage: React.FC = () => {
 
       <section aria-label="エピソード一覧">
         <Flex align="center" as="ul" direction="column" justify="center">
-          {episodeList.map((episode) => (
-            <EpisodeListItem key={episode.id} bookId={bookId} episodeId={episode.id} />
+          {book.episodes.map((episode) => (
+            <EpisodeListItem key={episode.id} bookId={bookId} episode={episode} />
           ))}
-          {episodeList.length === 0 && (
+          {book.episodes.length === 0 && (
             <>
               <Spacer height={Space * 2} />
               <Text color={Color.MONO_100} typography={Typography.NORMAL14}>
