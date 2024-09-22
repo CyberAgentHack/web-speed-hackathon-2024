@@ -16,6 +16,7 @@ import { ClientApp } from '@wsh-2024/app/src/index';
 import { getDayOfWeekStr } from '@wsh-2024/app/src/lib/date/getDayOfWeekStr';
 
 import { INDEX_HTML_PATH } from '../../constants/paths';
+import { is } from 'drizzle-orm';
 
 const app = new Hono();
 
@@ -70,7 +71,8 @@ async function createHTML({
 }
 
 app.get('*', async (c) => {
-  const injectData = await createInjectDataStr();
+  const isTopPage = c.req.path === '/';
+  const injectData = isTopPage ? await createInjectDataStr() : {};
   const sheet = new ServerStyleSheet();
 
   try {

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { Suspense, useEffect, useId, useState } from 'react';
+import { Suspense, useId } from 'react';
 
 import { BookCard } from '../../features/book/components/BookCard';
 import { FeatureCard } from '../../features/feature/components/FeatureCard';
@@ -16,18 +16,29 @@ import { Color, Space, Typography } from '../../foundation/styles/variables';
 import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
 
 import { CoverSection } from './internal/CoverSection';
+import { unstable_serialize } from 'swr';
+import { releaseApiClient } from '../../features/release/apiClient/releaseApiClient';
+import { featureApiClient } from '../../features/feature/apiClient/featureApiClient';
+import { rankingApiClient } from '../../features/ranking/apiClient/rankingApiClient';
 
 const TopPage: React.FC = () => {
   const todayStr = getDayOfWeekStr(moment());
 
   console.log('TopPage');
 
-  const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
-  console.log('release', release);
-  const { data: featureList } = useFeatureList({ query: {} });
-  console.log('featureList', featureList);
-  const { data: rankingList } = useRankingList({ query: {} });
-  console.log('rankingList', rankingList);
+  const template = document.getElementById('inject-data');
+  if (!template) {
+    throw new Error('inject-data not found');
+  }
+  const data = JSON.parse(template.innerHTML)
+  console.log('data', data);
+  const release_key = unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek: todayStr } }));
+  const feature_key = unstable_serialize(featureApiClient.fetchList$$key({ query: {} }));
+  const ranking_key = unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }));
+
+  const release = data[release_key];
+  const featureList = data[feature_key];
+  const rankingList = data[ranking_key];
 
   const pickupA11yId = useId();
   const rankingA11yId = useId();
