@@ -88,7 +88,7 @@ export const Router: React.FC = () => {
       <Route element={<CommonLayout />} path={'/'}>
         <Route
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <TopPage />
             </Suspense>
           }
@@ -112,7 +112,7 @@ export const Router: React.FC = () => {
       >
         <Route
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <BookDetailPage />
             </Suspense>
           }
@@ -120,7 +120,7 @@ export const Router: React.FC = () => {
         />
         <Route
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <EpisodeDetailPage />
             </Suspense>
           }
@@ -128,7 +128,7 @@ export const Router: React.FC = () => {
         />
         <Route
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <AuthorDetailPage />
             </Suspense>
           }
@@ -136,7 +136,7 @@ export const Router: React.FC = () => {
         />
         <Route
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <SearchPage />
             </Suspense>
           }
