@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import moment from 'moment-timezone';
+import _, { get } from 'lodash';
 import { Suspense, useId } from 'react';
 
 import { BookCard } from '../../features/book/components/BookCard';
@@ -21,8 +20,9 @@ import { releaseApiClient } from '../../features/release/apiClient/releaseApiCli
 import { featureApiClient } from '../../features/feature/apiClient/featureApiClient';
 import { rankingApiClient } from '../../features/ranking/apiClient/rankingApiClient';
 
+
 const TopPage: React.FC = () => {
-  const todayStr = getDayOfWeekStr(moment());
+  const todayStr = getDayOfWeekStr();
 
   console.log('TopPage');
 
