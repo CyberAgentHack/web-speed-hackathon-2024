@@ -1,5 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
-export const COMPANY = `
 吾輩は猫である
 夏目漱石
 
@@ -2376,4 +2374,3 @@ http://www.aozora.gr.jp/accent_separation.html
 2018年2月5日修正
 青空文庫作成ファイル：
 このファイルは、インターネットの図書館、青空文庫（http://www.aozora.gr.jp/）で作られました。入力、校正、制作にあたったのは、ボランティアの皆さんです。
-`;

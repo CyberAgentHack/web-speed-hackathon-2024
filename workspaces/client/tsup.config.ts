@@ -16,7 +16,6 @@ export default defineConfig(async (): Promise<Options[]> => {
   const SEED_IMAGE_DIR = path.resolve(WORKSPACE_DIR, './workspaces/server/seeds/images');
   const IMAGE_PATH_LIST = fs.readdirSync(SEED_IMAGE_DIR).map((file) => `/images/${file}`);
 
-  // minify client.global.js as much as possible
   return [
     {
       bundle: true,
@@ -44,27 +43,28 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
           polyfills: {
             events: true,
-            fs: true,
-            path: true,
           },
         }),
       ],
-      format: 'iife',
+      format: 'esm',
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
       },
       metafile: true,
       minify: 'terser',
+      noExternal: [/.*/],
       outDir: OUTPUT_DIR,
       platform: 'browser',
-      shims: true,
-      sourcemap: false,
+      shims: false,
+      // sourcemap: 'inline',
       splitting: false,
-      target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
-      treeshake: false,
+      target: ['chrome58'],
+      treeshake: true,
       terserOptions: {
-        compress: true,
+        compress: {
+          passes: 10,
+        },
         mangle: true,
       },
     },

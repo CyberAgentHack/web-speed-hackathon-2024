@@ -3,4 +3,4 @@
 # distディレクトリは除外する
 # ファイルは再帰的に検索する
 
-find . -type f -not -path "./node_modules/*" -not -path "./dist/*" -exec grep -l "client.global.js" {} \;
+find . -type f -not -path "./node_modules/*" -not -path "./dist/*" -exec grep -l "jquery" {} \;

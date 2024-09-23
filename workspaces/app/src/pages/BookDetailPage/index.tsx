@@ -20,7 +20,6 @@ import { useImage } from '../../foundation/hooks/useImage';
 import { Color, Space, Typography } from '../../foundation/styles/variables';
 
 import { BottomNavigator } from './internal/BottomNavigator';
-import { data } from 'jquery';
 
 const _HeadingWrapper = styled.section`
   display: grid;
