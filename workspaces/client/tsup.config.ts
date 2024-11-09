@@ -48,7 +48,7 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
         }),
       ],
-      format: ['iife', 'esm'],
+      format: 'iife',
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
