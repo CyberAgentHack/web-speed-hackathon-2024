@@ -16,17 +16,12 @@ import { Color, Space, Typography } from '../../foundation/styles/variables';
 import { CoverSection } from './internal/CoverSection';
 
 const TopPage: React.FC = () => {
-  // inject-dataのidを持つscriptタグの中身をjsonとして取得
-
   const day = new Date().getDay();
   const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] as const;
   const todayStr = days[day] as typeof days[number];
   const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
   const { data: featureList } = useFeatureList({ query: {} });
   const { data: rankingList } = useRankingList({ query: {} });
-  // const release = injectData['#requestUrl:"/api/v1/releases/:dayOfWeek",params:#dayOfWeek:"'+todayStr+'",,'];
-  // const featureList = injectData['#requestUrl:"/api/v1/features",query:#,'];
-  // const rankingList = injectData['#requestUrl:"/api/v1/rankings",query:#,'];
 
   const pickupA11yId = useId();
   const rankingA11yId = useId();

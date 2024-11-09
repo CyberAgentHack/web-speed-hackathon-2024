@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { Mesh, OrthographicCamera, PlaneGeometry, Scene, ShaderMaterial, TextureLoader, WebGLRenderer } from 'three';
+// import { Mesh, OrthographicCamera, PlaneGeometry, Scene, ShaderMaterial, TextureLoader, WebGLRenderer } from 'three';
 
-import { IMAGE_SRC } from './ImageSrc';
+// import { IMAGE_SRC } from './ImageSrc';
 
 const _Wrapper = styled.div`
   aspect-ratio: 16 / 9;
@@ -16,7 +16,7 @@ const _Image = styled.img`
 
 export const HeroImage: React.FC = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
+  // const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
 
   const updateImage = useCallback(({ height, src, width }: { height: number; src: string; width: number }) => {
     const image = imageRef.current;
@@ -35,8 +35,8 @@ export const HeroImage: React.FC = () => {
     }
 
     // width が 4096 / dpr の 16:9 の画像として描画する。
-    const width = 4096 / window.devicePixelRatio;
-    const height = (width / 16) * 9;
+    // const width = 4096 / window.devicePixelRatio;
+    // const height = (width / 16) * 9;
     const imageWidth = image.clientWidth;
     const imageHeight = (imageWidth / 16) * 9;
 

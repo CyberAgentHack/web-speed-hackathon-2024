@@ -25,6 +25,7 @@
     "react-dom": "18.2.0",
     "react-router-dom": "6.18.0",
     "regenerator-runtime": "0.14.1",
+    "sharp": "0.33.2",
     "swr": "2.2.4",
     "terser": "^5.36.0",
     "unorm": "1.6.0"

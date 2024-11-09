@@ -247,6 +247,9 @@ importers:
       regenerator-runtime:
         specifier: 0.14.1
         version: 0.14.1
+      sharp:
+        specifier: 0.33.2
+        version: 0.33.2
       swr:
         specifier: 2.2.4
         version: 2.2.4(react@18.2.0)
