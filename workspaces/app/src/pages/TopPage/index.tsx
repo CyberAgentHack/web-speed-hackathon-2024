@@ -1,4 +1,5 @@
-import _, { get } from 'lodash';
+import _ from 'lodash';
+import moment from 'moment-timezone';
 import { Suspense, useId } from 'react';
 
 import { BookCard } from '../../features/book/components/BookCard';
@@ -15,30 +16,12 @@ import { Color, Space, Typography } from '../../foundation/styles/variables';
 import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
 
 import { CoverSection } from './internal/CoverSection';
-import { unstable_serialize } from 'swr';
-import { releaseApiClient } from '../../features/release/apiClient/releaseApiClient';
-import { featureApiClient } from '../../features/feature/apiClient/featureApiClient';
-import { rankingApiClient } from '../../features/ranking/apiClient/rankingApiClient';
-
 
 const TopPage: React.FC = () => {
-  const todayStr = getDayOfWeekStr();
-
-  console.log('TopPage');
-
-  const template = document.getElementById('inject-data');
-  if (!template) {
-    throw new Error('inject-data not found');
-  }
-  const data = JSON.parse(template.innerHTML)
-  console.log('data', data);
-  const release_key = unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek: todayStr } }));
-  const feature_key = unstable_serialize(featureApiClient.fetchList$$key({ query: {} }));
-  const ranking_key = unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }));
-
-  const release = data[release_key];
-  const featureList = data[feature_key];
-  const rankingList = data[ranking_key];
+  const todayStr = getDayOfWeekStr(moment());
+  const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
+  const { data: featureList } = useFeatureList({ query: {} });
+  const { data: rankingList } = useRankingList({ query: {} });
 
   const pickupA11yId = useId();
   const rankingA11yId = useId();
@@ -58,7 +41,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" direction="row" gap={Space * 2} justify="flex-start">
               {_.map(featureList, (feature) => (
-                <FeatureCard key={feature.id} bookDetail={feature} />
+                <FeatureCard key={feature.id} bookId={feature.book.id} />
               ))}
             </Flex>
           </Box>
@@ -74,7 +57,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
               {_.map(rankingList, (ranking) => (
-                <RankingCard key={ranking.id} bookDetail={ranking} />
+                <RankingCard key={ranking.id} bookId={ranking.book.id} />
               ))}
             </Flex>
           </Box>
@@ -90,7 +73,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" gap={Space * 2} justify="flex-start">
               {_.map(release.books, (book) => (
-                <BookCard key={book.id} book={book} />
+                <BookCard key={book.id} bookId={book.id} />
               ))}
             </Flex>
           </Box>
@@ -101,7 +84,6 @@ const TopPage: React.FC = () => {
 };
 
 const TopPageWithSuspense: React.FC = () => {
-  console.log('TopPageWithSuspense');
   return (
     <Suspense fallback={null}>
       <TopPage />

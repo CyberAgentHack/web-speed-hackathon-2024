@@ -1,4 +1,4 @@
-// import 'core-js/full';
+import 'core-js/full';
 import '@webcomponents/webcomponentsjs';
 import 'regenerator-runtime/runtime';
 import 'es5-shim';

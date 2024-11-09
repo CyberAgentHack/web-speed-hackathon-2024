@@ -26,7 +26,6 @@
     "react-router-dom": "6.18.0",
     "regenerator-runtime": "0.14.1",
     "swr": "2.2.4",
-    "terser": "5.33.0",
     "unorm": "1.6.0"
   },
   "devDependencies": {

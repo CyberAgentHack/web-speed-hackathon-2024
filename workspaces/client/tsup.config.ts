@@ -26,7 +26,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       },
       env: {
         API_URL: '',
-        NODE_ENV: 'production',
+        NODE_ENV: process.env['NODE_ENV'] || 'development',
         PATH_LIST: IMAGE_PATH_LIST.join(',') || '',
       },
       esbuildOptions(options) {
@@ -43,30 +43,25 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
           polyfills: {
             events: true,
+            fs: true,
+            path: true,
           },
         }),
       ],
-      format: 'esm',
+      format: 'iife',
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
       },
       metafile: true,
-      minify: 'terser',
-      noExternal: [/.*/],
+      minify: false,
       outDir: OUTPUT_DIR,
       platform: 'browser',
-      shims: false,
-      // sourcemap: 'inline',
+      shims: true,
+      sourcemap: 'inline',
       splitting: false,
-      target: ['chrome58'],
-      treeshake: true,
-      terserOptions: {
-        compress: {
-          passes: 10,
-        },
-        mangle: true,
-      },
+      target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
+      treeshake: false,
     },
   ];
 });

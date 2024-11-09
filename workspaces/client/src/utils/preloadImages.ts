@@ -5,7 +5,6 @@ async function wait(milliseconds: number) {
 }
 
 export async function preloadImages() {
-  console.log('Preloading images...');
   if (process.env['PATH_LIST'] == null) {
     return;
   }
@@ -35,6 +34,4 @@ export async function preloadImages() {
   );
 
   await Promise.race([prefetch, wait(5000)]);
-
-  console.log('Images preloaded');
 }

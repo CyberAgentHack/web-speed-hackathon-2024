@@ -7,13 +7,10 @@ import type { GetBookResponse } from '@wsh-2024/schema/src/api/books/GetBookResp
 
 import type { DomainSpecificApiClientInterface } from '../../../lib/api/DomainSpecificApiClientInterface';
 import { apiClient } from '../../../lib/api/apiClient';
-import { GetBookDetailParams } from '@wsh-2024/schema/src/api/books/GetBookDetailParams';
-import { GetBookDetailResponse } from '@wsh-2024/schema/src/api/books/GetBookDetailResponse';
 
 type BookApiClient = DomainSpecificApiClientInterface<{
   fetch: [{ params: GetBookRequestParams }, GetBookResponse];
   fetchList: [{ query: GetBookListRequestQuery }, GetBookListResponse];
-  fetchDetail: [ { params: GetBookDetailParams }, GetBookDetailResponse];
 }>;
 
 export const bookApiClient: BookApiClient = {
@@ -33,14 +30,6 @@ export const bookApiClient: BookApiClient = {
   },
   fetchList$$key: (options) => ({
     requestUrl: `/api/v1/books`,
-    ...options,
-  }),
-  fetchDetail: async ({ params }) => {
-    const response = await apiClient.get<GetBookDetailResponse>(inject('/api/v1/books/:bookId/detail', params));
-    return response.data;
-  },
-  fetchDetail$$key: (options) => ({
-    requestUrl: `/api/v1/books/:bookId/detail`,
     ...options,
   }),
 };

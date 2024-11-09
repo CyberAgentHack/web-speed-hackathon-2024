@@ -8,7 +8,6 @@ import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
 import { useBook } from '../../book/hooks/useBook';
-import { GetFeatureListResponse } from '@wsh-2024/schema/src/api/features/GetFeatureListResponse';
 
 const _Wrapper = styled(Link)`
   display: grid;
@@ -45,17 +44,17 @@ const _AvatarWrapper = styled.div`
 `;
 
 type Props = {
-  bookDetail: GetFeatureListResponse[number];
+  bookId: string;
 };
 
-const FeatureCard: React.FC<Props> = ({ bookDetail }) => {
-  const book = bookDetail.book;
+const FeatureCard: React.FC<Props> = ({ bookId }) => {
+  const { data: book } = useBook({ params: { bookId } });
 
   const imageUrl = useImage({ height: 96, imageId: book.image.id, width: 96 });
   const authorImageUrl = useImage({ height: 32, imageId: book.author.image.id, width: 32 });
 
   return (
-    <_Wrapper href={`/books/${book.id}`}>
+    <_Wrapper href={`/books/${bookId}`}>
       {imageUrl != null && (
         <_ImgWrapper>
           <Image alt={book.image.alt} height={96} objectFit="cover" src={imageUrl} width={96} />

@@ -8,7 +8,6 @@ export default defineConfig(async (): Promise<Options[]> => {
   const PACKAGE_DIR = (await findPackageDir(process.cwd()))!;
   const OUTPUT_DIR = path.resolve(PACKAGE_DIR, './dist');
 
-  // minify client.global.js as much as possible
   return [
     {
       clean: true,
@@ -23,10 +22,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       },
       format: 'cjs',
       metafile: true,
-      minify: 'terser',
-      minifyWhitespace: true,
-      minifyIdentifiers: true,
-      minifySyntax: true,
+      minify: false,
       noExternal: [/@wsh-2024\/.*/],
       outDir: OUTPUT_DIR,
       shims: true,

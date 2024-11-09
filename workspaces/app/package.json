@@ -15,7 +15,6 @@
     "moment-timezone": "0.5.45",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-lazy-load-image-component": "1.6.2",
     "react-router-dom": "6.18.0",
     "react-use": "17.5.0",
     "regexparam": "3.0.0",

@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import jsesc from 'jsesc';
+import moment from 'moment-timezone';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet } from 'styled-components';
@@ -15,7 +16,6 @@ import { ClientApp } from '@wsh-2024/app/src/index';
 import { getDayOfWeekStr } from '@wsh-2024/app/src/lib/date/getDayOfWeekStr';
 
 import { INDEX_HTML_PATH } from '../../constants/paths';
-import { is } from 'drizzle-orm';
 
 const app = new Hono();
 
@@ -23,7 +23,7 @@ async function createInjectDataStr(): Promise<Record<string, unknown>> {
   const json: Record<string, unknown> = {};
 
   {
-    const dayOfWeek = getDayOfWeekStr();
+    const dayOfWeek = getDayOfWeekStr(moment());
     const releases = await releaseApiClient.fetch({ params: { dayOfWeek } });
     json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
   }
@@ -70,8 +70,7 @@ async function createHTML({
 }
 
 app.get('*', async (c) => {
-  const isTopPage = c.req.path === '/';
-  const injectData = isTopPage ? await createInjectDataStr() : {};
+  const injectData = await createInjectDataStr();
   const sheet = new ServerStyleSheet();
 
   try {

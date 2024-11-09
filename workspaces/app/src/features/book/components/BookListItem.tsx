@@ -10,7 +10,6 @@ import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
 import { useBook } from '../hooks/useBook';
-import { GetBookListResponse } from '@wsh-2024/schema/src/api/books/GetBookListResponse';
 
 const _Wrapper = styled.li`
   width: 100%;
@@ -28,21 +27,12 @@ const _ImgWrapper = styled.div`
   }
 `;
 
-type BookDetail = {
-  id: string;
-  name: string;
-  description: string;
-  image: {
-    id: string;
-  };
-};
-
 type Props = {
-  bookDetail: BookDetail;
+  bookId: string;
 };
 
-export const BookListItem: React.FC<Props> = ({ bookDetail }) => {
-  const book = bookDetail;
+export const BookListItem: React.FC<Props> = ({ bookId }) => {
+  const { data: book } = useBook({ params: { bookId } });
 
   const imageUrl = useImage({ height: 64, imageId: book.image.id, width: 64 });
 
