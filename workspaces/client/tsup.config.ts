@@ -26,7 +26,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       },
       env: {
         API_URL: '',
-        NODE_ENV: process.env['NODE_ENV'] || "production",
+        NODE_ENV: "production",
         PATH_LIST: IMAGE_PATH_LIST.join(',') || '',
       },
       esbuildOptions(options) {
@@ -48,7 +48,7 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
         }),
       ],
-      format: 'iife',
+      format: ['iife', 'esm'],
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
