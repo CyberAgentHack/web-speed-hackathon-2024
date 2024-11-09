@@ -13,15 +13,25 @@ import { Flex } from '../../foundation/components/Flex';
 import { Spacer } from '../../foundation/components/Spacer';
 import { Text } from '../../foundation/components/Text';
 import { Color, Space, Typography } from '../../foundation/styles/variables';
-import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
+// import { getDayOfWeekStr } from '../../lib/date/getDayOfWeekStr';
 
 import { CoverSection } from './internal/CoverSection';
 
 const TopPage: React.FC = () => {
-  const todayStr = getDayOfWeekStr(moment());
-  const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
-  const { data: featureList } = useFeatureList({ query: {} });
-  const { data: rankingList } = useRankingList({ query: {} });
+  // inject-dataのidを持つscriptタグの中身をjsonとして取得
+  const data = document.getElementById('inject-data')?.textContent;
+  const injectData = data ? JSON.parse(data) : {};
+  console.log(injectData);
+
+  const day = new Date().getDay();
+  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] as const;
+  const todayStr = days[day] as typeof days[number];
+  // const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
+  // const { data: featureList } = useFeatureList({ query: {} });
+  // const { data: rankingList } = useRankingList({ query: {} });
+  const release = injectData['#requestUrl:"/api/v1/releases/:dayOfWeek",params:#dayOfWeek:"'+todayStr+'",,'];
+  const featureList = injectData['#requestUrl:"/api/v1/features",query:#,'];
+  const rankingList = injectData['#requestUrl:"/api/v1/rankings",query:#,'];
 
   const pickupA11yId = useId();
   const rankingA11yId = useId();
@@ -41,7 +51,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" direction="row" gap={Space * 2} justify="flex-start">
               {_.map(featureList, (feature) => (
-                <FeatureCard key={feature.id} bookId={feature.book.id} />
+                <FeatureCard key={feature.id} book={feature.book} />
               ))}
             </Flex>
           </Box>
@@ -57,7 +67,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
               {_.map(rankingList, (ranking) => (
-                <RankingCard key={ranking.id} bookId={ranking.book.id} />
+                <RankingCard key={ranking.id} book={ranking.book} />
               ))}
             </Flex>
           </Box>
@@ -73,7 +83,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" gap={Space * 2} justify="flex-start">
               {_.map(release.books, (book) => (
-                <BookCard key={book.id} bookId={book.id} />
+                <BookCard key={book.id} book={book} />
               ))}
             </Flex>
           </Box>

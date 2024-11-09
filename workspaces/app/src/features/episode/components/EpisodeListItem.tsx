@@ -27,19 +27,31 @@ const _ImgWrapper = styled.div`
   }
 `;
 
-type Props = {
-  bookId: string;
-  episodeId: string;
+type Episode = {
+  book: {
+    id: string;
+  };
+  id: string;
+  image: {
+    id: string;
+  };
+  name: string;
+  chapter: number;
+  description: string;
 };
 
-export const EpisodeListItem: React.FC<Props> = ({ bookId, episodeId }) => {
-  const { data: episode } = useEpisode({ params: { episodeId } });
+type Props = {
+  episode: Episode;
+};
+
+export const EpisodeListItem: React.FC<Props> = ({ episode }) => {
+  // const { data: episode } = useEpisode({ params: { episodeId } });
 
   const imageUrl = useImage({ height: 96, imageId: episode.image.id, width: 96 });
 
   return (
     <_Wrapper>
-      <_Link href={`/books/${bookId}/episodes/${episode.id}`}>
+      <_Link href={`/books/${episode.book.id}/episodes/${episode.id}`}>
         <Spacer height={Space * 1.5} />
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
