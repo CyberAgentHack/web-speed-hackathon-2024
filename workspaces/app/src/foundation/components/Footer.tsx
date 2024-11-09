@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
   const updateDialogContent = useSetAtom(DialogContentAtom);
 
   const handleRequestToTermDialogOpen = async () => {
-    const TERM = await fetch('assets/Term.txt').then((response) => response.text());
+    const TERM = await fetch('/assets/Term.txt').then((response) => response.text());
     updateDialogContent(
       <_Content aria-labelledby={termDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={termDialogA11yId} typography={Typography.NORMAL16}>
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToContactDialogOpen = async () => {
-    const CONTACT = await fetch('assets/Contact.txt').then((response) => response.text());
+    const CONTACT = await fetch('/assets/Contact.txt').then((response) => response.text());
     updateDialogContent(
       <_Content aria-labelledby={contactDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={contactDialogA11yId} typography={Typography.NORMAL16}>
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToQuestionDialogOpen = async () => {
-    const QUESTION = await fetch('assets/Question.txt').then((response) => response.text());
+    const QUESTION = await fetch('/assets/Question.txt').then((response) => response.text());
     updateDialogContent(
       <_Content aria-labelledby={questionDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={questionDialogA11yId} typography={Typography.NORMAL16}>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToCompanyDialogOpen = async () => {
-    const COMPANY = await fetch('assets/Company.txt').then((response) => response.text());
+    const COMPANY = await fetch('/assets/Company.txt').then((response) => response.text());
     updateDialogContent(
       <_Content aria-labelledby={companyDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={companyDialogA11yId} typography={Typography.NORMAL16}>
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToOverviewDialogOpen = async () => {
-    const OVERVIEW = await fetch('assets/Overview.txt').then((response) => response.text());
+    const OVERVIEW = await fetch('/assets/Overview.txt').then((response) => response.text());
     updateDialogContent(
       <_Content aria-labelledby={overviewDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={overviewDialogA11yId} typography={Typography.NORMAL16}>

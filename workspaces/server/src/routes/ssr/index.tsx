@@ -22,21 +22,21 @@ const app = new Hono();
 async function createInjectDataStr(): Promise<Record<string, unknown>> {
   const json: Record<string, unknown> = {};
 
-  {
-    const dayOfWeek = getDayOfWeekStr(moment());
-    const releases = await releaseApiClient.fetch({ params: { dayOfWeek } });
-    json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
-  }
+  // {
+  //   const dayOfWeek = getDayOfWeekStr(moment());
+  //   const releases = await releaseApiClient.fetch({ params: { dayOfWeek } });
+  //   json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
+  // }
 
-  {
-    const features = await featureApiClient.fetchList({ query: {} });
-    json[unstable_serialize(featureApiClient.fetchList$$key({ query: {} }))] = features;
-  }
+  // {
+  //   const features = await featureApiClient.fetchList({ query: {} });
+  //   json[unstable_serialize(featureApiClient.fetchList$$key({ query: {} }))] = features;
+  // }
 
-  {
-    const ranking = await rankingApiClient.fetchList({ query: {} });
-    json[unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }))] = ranking;
-  }
+  // {
+  //   const ranking = await rankingApiClient.fetchList({ query: {} });
+  //   json[unstable_serialize(rankingApiClient.fetchList$$key({ query: {} }))] = ranking;
+  // }
 
   return json;
 }

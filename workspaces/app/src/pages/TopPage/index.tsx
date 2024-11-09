@@ -1,5 +1,3 @@
-import _ from 'lodash';
-import moment from 'moment-timezone';
 import { Suspense, useId } from 'react';
 
 import { BookCard } from '../../features/book/components/BookCard';
@@ -19,19 +17,16 @@ import { CoverSection } from './internal/CoverSection';
 
 const TopPage: React.FC = () => {
   // inject-dataのidを持つscriptタグの中身をjsonとして取得
-  const data = document.getElementById('inject-data')?.textContent;
-  const injectData = data ? JSON.parse(data) : {};
-  console.log(injectData);
 
   const day = new Date().getDay();
   const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] as const;
   const todayStr = days[day] as typeof days[number];
-  // const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
-  // const { data: featureList } = useFeatureList({ query: {} });
-  // const { data: rankingList } = useRankingList({ query: {} });
-  const release = injectData['#requestUrl:"/api/v1/releases/:dayOfWeek",params:#dayOfWeek:"'+todayStr+'",,'];
-  const featureList = injectData['#requestUrl:"/api/v1/features",query:#,'];
-  const rankingList = injectData['#requestUrl:"/api/v1/rankings",query:#,'];
+  const { data: release } = useRelease({ params: { dayOfWeek: todayStr } });
+  const { data: featureList } = useFeatureList({ query: {} });
+  const { data: rankingList } = useRankingList({ query: {} });
+  // const release = injectData['#requestUrl:"/api/v1/releases/:dayOfWeek",params:#dayOfWeek:"'+todayStr+'",,'];
+  // const featureList = injectData['#requestUrl:"/api/v1/features",query:#,'];
+  // const rankingList = injectData['#requestUrl:"/api/v1/rankings",query:#,'];
 
   const pickupA11yId = useId();
   const rankingA11yId = useId();
@@ -50,7 +45,7 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" direction="row" gap={Space * 2} justify="flex-start">
-              {_.map(featureList, (feature) => (
+              {featureList!=null && featureList.map((feature) => (
                 <FeatureCard key={feature.id} book={feature.book} />
               ))}
             </Flex>
@@ -66,7 +61,7 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
-              {_.map(rankingList, (ranking) => (
+              {rankingList!=null && rankingList.map((ranking) => (
                 <RankingCard key={ranking.id} book={ranking.book} />
               ))}
             </Flex>
@@ -82,7 +77,7 @@ const TopPage: React.FC = () => {
           <Spacer height={Space * 2} />
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" gap={Space * 2} justify="flex-start">
-              {_.map(release.books, (book) => (
+              {release!=null && release.books.map((book) => (
                 <BookCard key={book.id} book={book} />
               ))}
             </Flex>

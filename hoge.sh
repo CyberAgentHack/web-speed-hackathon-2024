@@ -1,5 +1,9 @@
-# tensorflow を含むjs,ts,tsxファイルを検索し、そのファイルのパスを表示する
+# 指定の文字列 を含むファイルを検索し、そのファイルのパスを表示する
 # node_modules以下は検索対象外
-# 
+# ファイルパスのみ表示する
+# 重複して表示されるファイルは一度だけ表示する
 
-grep -r --include=\*.{js,ts,tsx} tensorflow . --exclude-dir=node_modules --exclude-dir=dist
+str="chakra"
+
+# grep -r $str . | cut -d: -f1 | sort | uniq
+grep -r $str . --exclude-dir=node_modules | cut -d: -f1 | sort | uniq
