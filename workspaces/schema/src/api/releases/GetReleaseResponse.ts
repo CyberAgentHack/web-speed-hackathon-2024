@@ -28,14 +28,14 @@ export const GetReleaseResponseSchema = createSelectSchema(release)
               id: true,
             }),
           }),
-        episodes: createSelectSchema(episode)
-          .pick({
-            chapter: true,
-            description: true,
-            id: true,
-            name: true,
-          })
-          .array(),
+        // episodes: createSelectSchema(episode)
+        //   .pick({
+        //     chapter: true,
+        //     description: true,
+        //     id: true,
+        //     name: true,
+        //   })
+        //   .array(),
         image: createSelectSchema(image).pick({
           alt: true,
           id: true,

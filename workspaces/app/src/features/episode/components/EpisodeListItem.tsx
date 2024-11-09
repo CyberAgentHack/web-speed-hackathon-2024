@@ -28,13 +28,7 @@ const _ImgWrapper = styled.div`
 `;
 
 type Episode = {
-  book: {
-    id: string;
-  };
   id: string;
-  image: {
-    id: string;
-  };
   name: string;
   chapter: number;
   description: string;
@@ -42,16 +36,18 @@ type Episode = {
 
 type Props = {
   episode: Episode;
+  bookId: string;
+  imageId: string;
 };
 
-export const EpisodeListItem: React.FC<Props> = ({ episode }) => {
+export const EpisodeListItem: React.FC<Props> = ({ episode, bookId, imageId }) => {
   // const { data: episode } = useEpisode({ params: { episodeId } });
 
-  const imageUrl = useImage({ height: 96, imageId: episode.image.id, width: 96 });
+  const imageUrl = useImage({ height: 96, imageId: imageId, width: 96 });
 
   return (
     <_Wrapper>
-      <_Link href={`/books/${episode.book.id}/episodes/${episode.id}`}>
+      <_Link href={`/books/${bookId}/episodes/${episode.id}`}>
         <Spacer height={Space * 1.5} />
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (

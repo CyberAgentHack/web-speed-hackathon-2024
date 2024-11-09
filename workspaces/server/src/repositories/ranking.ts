@@ -49,14 +49,14 @@ class RankingRepository implements RankingRepositoryInterface {
                   },
                 },
               },
-              episodes: {
-                columns: {
-                  chapter: true,
-                  description: true,
-                  id: true,
-                  name: true,
-                },
-              },
+              // episodes: {
+              //   columns: {
+              //     chapter: true,
+              //     description: true,
+              //     id: true,
+              //     name: true,
+              //   },
+              // },
               image: {
                 columns: {
                   alt: true,

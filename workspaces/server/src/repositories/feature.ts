@@ -48,14 +48,14 @@ class FeatureRepository implements FeatureRepositoryInterface {
                   },
                 },
               },
-              episodes: {
-                columns: {
-                  chapter: true,
-                  description: true,
-                  id: true,
-                  name: true,
-                },
-              },
+              // episodes: {
+              //   columns: {
+              //     chapter: true,
+              //     description: true,
+              //     id: true,
+              //     name: true,
+              //   },
+              // },
               image: {
                 columns: {
                   alt: true,
