@@ -7,9 +7,16 @@
 今回のテーマは、架空の漫画サイト「Cyber TOON」です。
 レギュレーションを守った上で、Cyber TOON のパフォーマンスを改善してください。
 
+- 順位は出ませんが、いつでも参加・計測できます。
+
+<details>
+<summary>過去の開催情報</summary>
+
 - 開催日程 | 2024/03/23 10:30 JST - 2024/03/24 17:30 JST
 - 募集要項 | https://cyberagent.connpass.com/event/300386
 - リーダーボード・順位表 | https://web-speed-hackathon-scoring-server-2024.fly.dev/
+
+</details>
 
 ## 提出方法
 
